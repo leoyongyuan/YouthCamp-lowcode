@@ -14,6 +14,7 @@
                             v-bind="attrs"
                             v-on="on"
                             class="chip"
+                            @click="showPanle"
                         >
                         <v-icon
                         >{{ item.icon }}</v-icon>
@@ -22,7 +23,6 @@
                     <span> {{ item.tips }} </span>
                 </v-tooltip>
             </div>
-            <!-- <ComponentList /> -->
           </section>
           <section class="center">
             <div class="content">
@@ -33,6 +33,9 @@
             right
           </section>
         </main>
+        <div v-show="show" class="panle">
+            <ComponentList />
+        </div>
     </div>
 </template>
 <script>
@@ -56,13 +59,20 @@ export default {
                 {
                     icon: 'mdi-database',
                     tips: '数据源'
-                }]
+                }
+            ],
+            show: false,
         }
     },
     components: {
         Toolbar,
         Editor,
         ComponentList,
+    },
+    methods: {
+        showPanle() {
+            this.show = !this.show
+        }, 
     }
 }
 </script>
@@ -91,7 +101,6 @@ export default {
                 margin-top: 40px;
             }
         }
-
         .right {
             position: absolute;
             height: 100%;
@@ -102,6 +111,7 @@ export default {
                 width: 100%;
             }
         }
+
 
         .center {
             margin-left: 70px;
@@ -117,6 +127,16 @@ export default {
                 overflow: auto;
             }
         }
+    }
+
+    .panle {
+        position: absolute;
+        height: calc(100% - 64px);
+        width: 250px;
+        left: 70px;
+        top: 66px;
+        background-color: #fff;
+        border: 1px solid #ddd;
     }
 
     .placeholder {
