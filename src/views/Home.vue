@@ -3,41 +3,29 @@
         <Toolbar />
         <main>
           <section class="left">
-            <v-chip
-                filter
-                label
-                link
-                pill
-                class="chip"
-            >
-            <v-icon
-            >mdi-puzzle</v-icon>
-            </v-chip>
-            <v-chip
-                filter
-                label
-                link
-                pill
-                class="chip"
-            >
-            <v-icon
-            >mdi-code-json</v-icon>
-            </v-chip>
-            <v-chip
-                filter
-                label
-                link
-                pill
-                class="chip"
-            >
-            <v-icon
-            >mdi-database</v-icon>
-            </v-chip>
+            <div v-for="(item,index) in list">
+                <v-tooltip right>
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-chip
+                            filter
+                            label
+                            link
+                            pill
+                            v-bind="attrs"
+                            v-on="on"
+                            class="chip"
+                        >
+                        <v-icon
+                        >{{ item.icon }}</v-icon>
+                        </v-chip>
+                    </template>
+                    <span> {{ item.tips }} </span>
+                </v-tooltip>
+            </div>
             <!-- <ComponentList /> -->
           </section>
           <section class="center">
-            <div
-                class="content">
+            <div class="content">
                 <Editor />
             </div>
           </section>
@@ -54,12 +42,28 @@ import ComponentList from "../components/ComponentList.vue";
 
 export default {
     name: 'Home',
-    data: () => ({ drawer: null }),
+    data() {
+        return {
+            list: [ 
+                {
+                    icon: 'mdi-puzzle',
+                    tips: '组件库'
+                },
+                {
+                    icon: 'mdi-code-json',
+                    tips: 'JSON'
+                },
+                {
+                    icon: 'mdi-database',
+                    tips: '数据源'
+                }]
+        }
+    },
     components: {
-    Toolbar,
-    Editor,
-    ComponentList,
-}
+        Toolbar,
+        Editor,
+        ComponentList,
+    }
 }
 </script>
 
