@@ -124,6 +124,7 @@ export default {
 
         handleDragOver(e) {
             e.preventDefault()
+            e.dataTransfer.dropEffect = 'copy'
         },
     }
 }
