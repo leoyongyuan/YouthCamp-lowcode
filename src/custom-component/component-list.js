@@ -17,6 +17,10 @@ export const commonAttr = {
     },
 }
 
+export const commonStyle = {
+    rotate: 0,
+    opacity: 1,
+}
 
 const list = [
     {
@@ -60,7 +64,7 @@ const list = [
 
 for (let i = 0 ; i < list.length; i++) {
     const item = list[i]
-    item.style = { ...item.style }
+    item.style = { ...commonStyle, ...item.style }
     list[i] = { ...commonAttr, ...item }
 }
 

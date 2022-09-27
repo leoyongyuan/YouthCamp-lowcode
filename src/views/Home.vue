@@ -3,7 +3,7 @@
         <Toolbar />
         <main>
           <section class="left">
-            <div v-for="(item,index) in list">
+            <div v-for="(item,index) in list" :key="index">
                 <v-tooltip right>
                     <template v-slot:activator="{ on, attrs }">
                         <v-chip
