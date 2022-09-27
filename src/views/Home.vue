@@ -25,7 +25,11 @@
             </div>
           </section>
           <section class="center">
-            <div class="content">
+            <div 
+                class="content"
+                @drop="handleDrop"
+                @dragover="handleDragOver"
+                >
                 <Editor />
             </div>
           </section>
@@ -53,6 +57,10 @@
 import Toolbar from "../components/Toolbar.vue";
 import Editor from "../components/Editor/index.vue";
 import ComponentList from "../components/ComponentList.vue";
+import componentList from '@/custom-component/component-list'
+import { mapState } from "vuex";
+import { deepCopy } from '@/utils/utils'
+import generateID from '@/utils/utils'
 
 export default {
     name: 'Home',
@@ -85,11 +93,38 @@ export default {
         Editor,
         ComponentList,
     },
+
+    computed: mapState([
+        'componentData',
+        'curComponent',
+        'isClickComponent',
+        'canvasStyleData',
+        'editor',
+    ]),
+
     methods: {
         showPanle(id) {
             this.show = !this.show
             this.select = id
-        }, 
+        },
+
+        handleDrop(e) {
+            e.preventDefault()
+            e.stopPropagation()
+            const index = e.dataTransfer.getData('index')
+            const rectInfo = this.editor.getBoundingClientRect()
+            if (index) {
+                const component = deepCopy(componentList[index])
+                component.style.top = e.clientY - rectInfo.y
+                component.style.left = e.clientX - rectInfo.x
+                component.id = generateID()
+                this.$store.commit('addComponent', { component })
+            }
+        },
+
+        handleDragOver(e) {
+            e.preventDefault()
+        },
     }
 }
 </script>
