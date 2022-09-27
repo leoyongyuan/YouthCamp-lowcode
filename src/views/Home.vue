@@ -43,6 +43,9 @@
             <div v-else-if="select === 2">
                 3
             </div>
+            <div v-else-if="select === 3">
+                4
+            </div>
         </div>
     </div>
 </template>
@@ -63,6 +66,10 @@ export default {
                 {
                     icon: 'mdi-code-json',
                     tips: 'JSON'
+                },
+                {   
+                    icon: 'mdi-language-javascript',
+                    tips: 'javascript'
                 },
                 {
                     icon: 'mdi-database',
