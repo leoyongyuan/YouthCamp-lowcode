@@ -13,15 +13,14 @@
             :element="item"
             :index="index"
             >
-            <!-- <component
+            <component
                 :is="item.component"
                 :id="'component' + item.id"
                 class="component"
                 :prop-value="item.propValue"
                 :element="item"
                 :request="item.request"
-            /> -->
-            {{ item.component }}
+            />
         </div>
     </div>
 </template>

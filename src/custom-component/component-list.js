@@ -40,7 +40,7 @@ const list = [
         },
     },
     {
-        component: 'Picture',
+        component: 'VPicture',
         label: '图片',
         icon: 'mdi-image',
         propValue: {
@@ -58,7 +58,7 @@ const list = [
     },
 ]
 
-for (let i = 0, len = list.length; i < len; i++) {
+for (let i = 0 ; i < list.length; i++) {
     const item = list[i]
     item.style = { ...item.style }
     list[i] = { ...commonAttr, ...item }

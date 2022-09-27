@@ -1,5 +1,10 @@
 <template>
-    <button>按钮</button>
+    <v-btn
+      depressed
+      color="primary"
+    >
+      Primary
+    </v-btn>
 </template>
 
 <script>
