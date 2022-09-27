@@ -19,7 +19,6 @@
                 class="component"
                 :prop-value="item.propValue"
                 :element="item"
-                :request="item.request"
             />
         </div>
     </div>

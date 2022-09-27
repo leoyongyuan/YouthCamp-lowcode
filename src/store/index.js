@@ -38,6 +38,31 @@ export default new Vuex.Store({
             state.componentData.push(component)
         }
     },
+
+    setCurComponent(state, { component, index }) {
+        state.curComponent = component
+        state.curComponentIndex = index
+    },
+
+    setShapeStyle({ curComponent }, { top, left, width, height, rotate }) {
+        if (top) curComponent.style.top = Math.round(top)
+        if (left) curComponent.style.left = Math.round(left)
+        if (width) curComponent.style.width = Math.round(width)
+        if (height) curComponent.style.height = Math.round(height)
+        if (rotate) curComponent.style.rotate = Math.round(rotate)
+    },
+
+    setClickComponentStatus(state, status) {
+        state.isClickComponent = status
+    },
+
+    setEditMode(state, mode) {
+        state.editMode = mode
+    },
+
+    setInEditorStatus(state, status) {
+        state.isInEdiotr = status
+    },
   },
   actions: {
   },
