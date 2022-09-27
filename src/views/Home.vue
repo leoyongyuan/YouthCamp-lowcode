@@ -34,7 +34,22 @@
             </div>
           </section>
           <section class="right">
-            right
+            <v-tabs v-model="tab">
+                <v-tab href="#tab-1">属性</v-tab>
+                <v-tab href="#tab-2">联动</v-tab>
+                <v-tab href="#tab-3">高级</v-tab>
+            </v-tabs>
+            <v-tabs-items v-model="tab">
+                <v-tab-item
+                    v-for="i in 3"
+                    :key="i"
+                    :value="'tab-' + i"
+                >
+                    <v-card flat>
+                    <v-card-text>{{ text }}</v-card-text>
+                    </v-card>
+                </v-tab-item>
+            </v-tabs-items>
           </section>
         </main>
         <div v-show="show" class="panle">
@@ -66,6 +81,8 @@ export default {
     name: 'Home',
     data() {
         return {
+            tab: null,
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
             list: [ 
                 {
                     icon: 'mdi-puzzle',
@@ -160,6 +177,8 @@ export default {
             width: 288px;
             right: 0;
             top: 0;
+            margin: -10px;
+            margin-top: 10px;
             .el-select {
                 width: 100%;
             }
