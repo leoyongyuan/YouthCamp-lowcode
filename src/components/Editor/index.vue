@@ -13,16 +13,15 @@
             :element="item"
             :index="index"
             >
-            <component
+            <!-- <component
                 :is="item.component"
                 :id="'component' + item.id"
                 class="component"
-                :style="getComponentStyle(item.style)"
                 :prop-value="item.propValue"
                 :element="item"
                 :request="item.request"
-                @input="handleInput"
-            />
+            /> -->
+            {{ item.component }}
         </div>
     </div>
 </template>
@@ -54,5 +53,25 @@ export default {
 </script>
 
 <style>
+.editor {
+    position: relative;
+    background: #fff;
+    margin: auto;
 
+    .lock {
+        opacity: .5;
+
+        &:hover {
+            cursor: not-allowed;
+        }
+    }
+}
+
+.edit {
+    .component {
+        outline: none;
+        width: 100%;
+        height: 100%;
+    }
+}
 </style>
