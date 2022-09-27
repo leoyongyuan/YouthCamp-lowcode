@@ -35,9 +35,14 @@
           </section>
           <section class="right">
             <v-tabs v-model="tab">
-                <v-tab href="#tab-1">属性</v-tab>
-                <v-tab href="#tab-2">联动</v-tab>
-                <v-tab href="#tab-3">高级</v-tab>
+                <v-tab href="#tab-1">
+                    属性<v-icon>mdi-checkbox-multiple-blank</v-icon></v-tab>
+                <v-tab href="#tab-2">
+                    联动<v-icon>mdi-vector-link</v-icon>
+                </v-tab>
+                <v-tab href="#tab-3">
+                    高级<v-icon>mdi-arrow-up-right-bold</v-icon>
+                </v-tab>
             </v-tabs>
             <v-tabs-items v-model="tab">
                 <v-tab-item
