@@ -1,22 +1,23 @@
 <template>
     <div class="component-list" @dragstart="handleDragStart">
         <div
-            v-for="(item,index) in componentList"
+            v-for="(item, index) in componentList"
             :key="index"
-            dragable
+            class="list"
+            draggable
             :data-index="index"
         >
-        <v-chip
-            filter
-            label
-            link
-            outlined
-            pill
-        >
-        <v-icon
-        
-        >mdi-code-json</v-icon>
-        </v-chip>
+        <v-tooltip bottom color="success">
+            <template v-slot:activator="{ on, attrs }">
+                <v-icon
+                    elevation="1"
+                    v-bind="attrs"
+                    v-on="on">
+                    {{item.icon }}
+                </v-icon>
+            </template>
+            <span>{{ item.label }}</span>
+        </v-tooltip>
         </div>
     </div>
 </template>
@@ -62,6 +63,7 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
+        margin: 20px;
 
         &:active {
             cursor: grabbing;

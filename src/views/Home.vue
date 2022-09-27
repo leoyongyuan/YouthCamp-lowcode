@@ -14,7 +14,7 @@
                             v-bind="attrs"
                             v-on="on"
                             class="chip"
-                            @click="showPanle"
+                            @click="showPanle(index)"
                         >
                         <v-icon
                         >{{ item.icon }}</v-icon>
@@ -34,7 +34,15 @@
           </section>
         </main>
         <div v-show="show" class="panle">
-            <ComponentList />
+            <div v-if="select === 0">
+                <ComponentList />
+            </div>
+            <div v-else-if="select === 1">
+                2
+            </div>
+            <div v-else-if="select === 2">
+                3
+            </div>
         </div>
     </div>
 </template>
@@ -62,6 +70,7 @@ export default {
                 }
             ],
             show: false,
+            select: 0,
         }
     },
     components: {
@@ -70,8 +79,9 @@ export default {
         ComponentList,
     },
     methods: {
-        showPanle() {
+        showPanle(id) {
             this.show = !this.show
+            this.select = id
         }, 
     }
 }

@@ -23,7 +23,7 @@ const list = [
         component: 'VButton',
         label: '按钮',
         propValue: '按钮',
-        icon: 'button',
+        icon: 'mdi-gesture-tap-button',
         style: {
             width: 100,
             height: 34,
@@ -37,6 +37,23 @@ const list = [
             textAlign: '',
             color: '',
             backgroundColor: '',
+        },
+    },
+    {
+        component: 'Picture',
+        label: '图片',
+        icon: 'mdi-image',
+        propValue: {
+            url: require('@/assets/title.jpg'),
+            flip: {
+                horizontal: false,
+                vertical: false,
+            },
+        },
+        style: {
+            width: 300,
+            height: 200,
+            borderRadius: '',
         },
     },
 ]
