@@ -53,6 +53,7 @@
                     v-for="i in 3"
                     :key="i"
                     :value="'tab-' + i"
+                    v-if="curComponent" 
                 >
                     <v-card flat v-if="i == 1">
                         <component :is="curComponent.component + 'Attr'" />
@@ -64,11 +65,11 @@
                     <v-card flat v-else-if="i == 3">
                         {{ text }}
                     </v-card>
-                    <v-card flat v-else>
-                        <CanvasAttr />
-                    </v-card>
                 </v-tab-item>
             </v-tabs-items>
+            <v-card flat v-else>
+                <CanvasAttr />
+            </v-card>
           </section>
         </main>
         <div v-show="show" class="panle">

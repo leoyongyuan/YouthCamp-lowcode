@@ -3,7 +3,6 @@
         <el-form style="padding: 20px;">
             <el-form-item v-for="(key, index) in Object.keys(options)" :key="index" :label="options[key]">
                 <el-color-picker v-if="isIncludesColor(key)" v-model="canvasStyleData[key]" show-alpha></el-color-picker>
-                <el-input v-else v-model.number="canvasStyleData[key]" type="number" />
             </el-form-item>
         </el-form>
     </div>
@@ -17,9 +16,7 @@ export default {
         return {
             options: {
                 color: '颜色',
-                opacity: '不透明度',
                 backgroundColor: '背景色',
-                fontSize: '字体大小',
             },
         }
     },
