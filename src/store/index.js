@@ -1,12 +1,18 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import compose from './compose'
+import snapshot from './snapshot'
+import contextmenu from './contextmenu'
+import copy from './copy'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     ...compose.state,
+    ...snapshot.state,
+    ...contextmenu.state,
+    ...copy.state,
 
     editMode: 'edit', // 编辑器模式 edit preview
     canvasStyleData: { // 页面全局数据
@@ -30,7 +36,10 @@ export default new Vuex.Store({
   },
   mutations: {
     ...compose.mutations,
-
+    ...snapshot.mutations,
+    ...contextmenu.mutations,
+    ...copy.mutations,
+    
     addComponent(state, { component, index }) {
         if (index !== undefined) {
             state.componentData.splice(index, 0, component)
