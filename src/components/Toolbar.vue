@@ -1,8 +1,18 @@
 <template>
     <div>
         <div class="toolbar">
-            <v-btn class="gap" elevation="1" @click="undo">撤消</v-btn>
-            <v-btn class="gap" elevation="1" @click="redo">回溯</v-btn>
+            <div class="canvas-config">
+                <span style="margin: 7px;"><v-icon> mdi-laptop</v-icon></span>
+                <input v-model="canvasStyleData.width">
+                <span>*</span>
+                <input v-model="canvasStyleData.height">
+            </div>
+            <v-btn class="gap" elevation="1" @click="undo"><v-icon>mdi-arrow-u-left-top</v-icon></v-btn>
+            <v-btn class="gap" elevation="1" @click="redo"><v-icon>mdi-arrow-u-right-top</v-icon></v-btn>
+            <v-btn class="gap" elevation="1"><v-icon>mdi-content-save-all-outline</v-icon></v-btn>
+            <v-btn class="gap" elevation="1"><v-icon>mdi-archive-eye-outline</v-icon></v-btn>
+            <v-btn class="gap" elevation="1"><v-icon>mdi-delete-circle-outline</v-icon></v-btn>
+            
             <el-popover
                 placement="bottom-start"
                 width="200"
