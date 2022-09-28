@@ -76,6 +76,10 @@ export default new Vuex.Store({
         state.isInEdiotr = status
     },
 
+    setComponentData(state, componentData = []) {
+        Vue.set(state, 'componentData', componentData)
+    },
+    
     deleteComponent(state, index) {
         if (index === undefined) {
             index = state.curComponentIndex
