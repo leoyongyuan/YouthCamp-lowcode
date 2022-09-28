@@ -4,6 +4,7 @@ import compose from './compose'
 import snapshot from './snapshot'
 import contextmenu from './contextmenu'
 import copy from './copy'
+import layer from './layer'
 
 Vue.use(Vuex)
 
@@ -13,6 +14,7 @@ export default new Vuex.Store({
     ...snapshot.state,
     ...contextmenu.state,
     ...copy.state,
+    ...layer.state,
 
     editMode: 'edit', // 编辑器模式 edit preview
     canvasStyleData: { // 页面全局数据
@@ -39,7 +41,8 @@ export default new Vuex.Store({
     ...snapshot.mutations,
     ...contextmenu.mutations,
     ...copy.mutations,
-    
+    ...layer.mutations,
+
     addComponent(state, { component, index }) {
         if (index !== undefined) {
             state.componentData.splice(index, 0, component)
@@ -71,6 +74,21 @@ export default new Vuex.Store({
 
     setInEditorStatus(state, status) {
         state.isInEdiotr = status
+    },
+
+    deleteComponent(state, index) {
+        if (index === undefined) {
+            index = state.curComponentIndex
+        }
+
+        if (index == state.curComponentIndex) {
+            state.curComponentIndex = null
+            state.curComponent = null
+        }
+
+        if (/\d/.test(index)) {
+            state.componentData.splice(index, 1)
+        }
     },
   },
   actions: {
