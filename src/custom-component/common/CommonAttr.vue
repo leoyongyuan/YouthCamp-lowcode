@@ -29,6 +29,7 @@ export default {
             borderStyleOptions,
             verticalAlignOptions,
             selectKey,
+            activeName: '',
         }
     },
     computed: {
@@ -43,9 +44,6 @@ export default {
         curComponent() {
             return this.$store.state.curComponent
         },
-    },
-    created() {
-        this.activeName = this.curComponent.collapseName
     },
     methods: {
         isIncludesColor(str) {

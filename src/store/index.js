@@ -79,7 +79,7 @@ export default new Vuex.Store({
     setComponentData(state, componentData = []) {
         Vue.set(state, 'componentData', componentData)
     },
-    
+
     deleteComponent(state, index) {
         if (index === undefined) {
             index = state.curComponentIndex

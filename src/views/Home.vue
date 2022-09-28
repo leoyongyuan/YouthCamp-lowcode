@@ -56,12 +56,16 @@
                 >
                     <v-card flat v-if="i == 1">
                         <component :is="curComponent.component + 'Attr'" />
+                        <!-- <CanvasAttr /> -->
                     </v-card>
                     <v-card flat v-else-if="i == 2">
                         {{ text }}
                     </v-card>
-                    <v-card flat v-else>
+                    <v-card flat v-else-if="i == 3">
                         {{ text }}
+                    </v-card>
+                    <v-card flat v-else>
+                        <CanvasAttr />
                     </v-card>
                 </v-tab-item>
             </v-tabs-items>
@@ -92,6 +96,7 @@ import { listenGlobalKeyDown } from '@/utils/shortcutKey'
 import { mapState } from "vuex";
 import { deepCopy } from '@/utils/utils'
 import generateID from '@/utils/utils'
+import CanvasAttr from "@/components/CanvasAttr.vue";
 
 export default {
     name: 'Home',
@@ -125,6 +130,7 @@ export default {
         Toolbar,
         Editor,
         ComponentList,
+        CanvasAttr
     },
 
     computed: mapState([

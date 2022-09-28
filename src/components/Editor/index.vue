@@ -21,10 +21,12 @@
         >
             <component
                 :is="item.component"
-                :id="'component' + item.id"
                 class="component"
+                :style="getComponentStyle(item.style)"
                 :prop-value="item.propValue"
                 :element="item"
+                :request="item.request"
+                @input="handleInput"
             />
         </Shape>
         <ContextMenu />
@@ -76,6 +78,21 @@ export default {
 
         getComponentStyle(style) {
             return getStyle(style, this.svgFilterAttrs)
+        },
+
+        handleInput(element, value) {
+            // 根据文本组件高度调整 shape 高度
+            this.$store.commit('setShapeStyle', { height: this.getTextareaHeight(element, value) })
+        },
+
+        getTextareaHeight(element, text) {
+            let { lineHeight, fontSize, height } = element.style
+            if (lineHeight === '') {
+                lineHeight = 1.5
+            }
+
+            const newHeight = (text.split('<br>').length - 1) * lineHeight * (fontSize || this.canvasStyleData.fontSize)
+            return height > newHeight ? height : newHeight
         },
 
         handleContextMenu(e) {

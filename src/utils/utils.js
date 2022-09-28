@@ -1,11 +1,9 @@
 import Vue from 'vue'
 
 
-export function deepCopy(target, hash_table = new WeakMap()) {
+export function deepCopy(target) {
     if (typeof target === 'object') {
         let clone = Array.isArray(target) ? [] : {};
-        if (hash_table.get(target)) return hash_table.get(target);
-        hash_table.set(target,clone);
         for (const key in target) {
             if (typeof target[key] == 'object') {
                 clone[key] = deepCopy(target[key])
