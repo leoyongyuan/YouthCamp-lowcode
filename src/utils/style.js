@@ -1,3 +1,7 @@
+import { divide, multiply } from 'mathjs'
+import store from '@/store'
+
+
 const filterKeys = ['width', 'height', 'scale']
 
 export function getCanvasStyle(canvasStyleData) {
@@ -54,4 +58,8 @@ export function getShapeStyle(style) {
     })
 
     return result
+}
+
+export function changeStyleWithScale(value) {
+    return multiply(value, divide(parseInt(store.state.canvasStyleData.scale), 100))
 }

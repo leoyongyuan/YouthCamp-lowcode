@@ -29,7 +29,9 @@
                 class="content"
                 @drop="handleDrop"
                 @dragover="handleDragOver"
-                >
+                @mousedown="handleMouseDown"
+                @mouseup="deselectCurComponent"
+            >
                 <Editor />
             </div>
           </section>
@@ -149,12 +151,30 @@ export default {
                 component.style.left = e.clientX - rectInfo.x
                 component.id = generateID()
                 this.$store.commit('addComponent', { component })
+                this.$store.commit('recordSnapshot')
             }
         },
 
         handleDragOver(e) {
             e.preventDefault()
             e.dataTransfer.dropEffect = 'copy'
+        },
+
+        handleMouseDown(e) {
+            e.stopPropagation()
+            this.$store.commit('setClickComponentStatus', false)
+            this.$store.commit('setInEditorStatus', true)
+        },
+
+        deselectCurComponent(e) {
+            if (!this.isClickComponent) {
+                this.$store.commit('setCurComponent', { component: null, index: null })
+            }
+
+            // 0 左击 1 滚轮 2 右击
+            if (e.button != 2) {
+                this.$store.commit('hideContextMenu')
+            }
         },
     }
 }

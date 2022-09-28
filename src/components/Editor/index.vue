@@ -5,7 +5,10 @@
         :class="{ edit: isEdit }"
         :style="{
             ...getCanvasStyle(canvasStyleData),
+            width: changeStyleWithScale(canvasStyleData.width) + 'px',
+            height: changeStyleWithScale(canvasStyleData.height) + 'px',
         }"
+        @contextmenu="handleContextMenu"
     >
         <Shape
             v-for="(item, index) in componentData"
@@ -24,6 +27,7 @@
                 :element="item"
             />
         </Shape>
+        <ContextMenu />
     </div>
 </template>
 
@@ -31,9 +35,11 @@
 import { mapState } from 'vuex'
 import { getCanvasStyle, getStyle, getShapeStyle } from '@/utils/style'
 import Shape from './Shape.vue'
+import ContextMenu from './ContextMenu.vue';
+import { changeStyleWithScale } from '@/utils/style'
 
 export default {
-    components: { Shape },
+    components: { Shape, ContextMenu },
     props: {
         isEdit: {
             type: Boolean,
@@ -66,8 +72,28 @@ export default {
     methods: {
         getCanvasStyle,
         getShapeStyle,
+        changeStyleWithScale,
+
         getComponentStyle(style) {
             return getStyle(style, this.svgFilterAttrs)
+        },
+
+        handleContextMenu(e) {
+            e.stopPropagation()
+            e.preventDefault()
+
+            // 计算菜单相对于编辑器的位移
+            let target = e.target
+            let top = e.offsetY
+            let left = e.offsetX
+
+            while (!target.className.includes('editor')) {
+                left += target.offsetLeft
+                top += target.offsetTop
+                target = target.parentNode
+            }
+
+            this.$store.commit('showContextMenu', { top, left })
         },
     },
 }
