@@ -1,13 +1,39 @@
 <template>
     <div>
         <div class="toolbar">
-            <v-btn elevation="2">click-me</v-btn>
+            <v-btn class="gap" elevation="2" @click="undo">撤消</v-btn>
+            <v-btn class="gap" elevation="2" @click="redo">重做</v-btn>
         </div>     
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+export default {
+    data() {
+        return {
 
+        }
+    },
+
+    computed:mapState([
+        'componentData',
+        'canvasStyleData',
+        'areaData',
+        'curComponent',
+        'curComponentIndex',
+    ]),
+
+    methods: {
+        undo() {
+            this.$store.commit('undo')
+        },
+
+        redo() {
+            this.$store.commit('redo')
+        },
+    }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -17,7 +43,10 @@
     overflow-x: auto;
     background: #fff;
     border-bottom: 1px solid #ddd;
-
+    .gap {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
     .canvas-config {
         display: inline-block;
         margin-left: 10px;

@@ -88,6 +88,7 @@ import Toolbar from "../components/Toolbar.vue";
 import Editor from "../components/Editor/index.vue";
 import ComponentList from "../components/ComponentList.vue";
 import componentList from '@/custom-component/component-list'
+import { listenGlobalKeyDown } from '@/utils/shortcutKey'
 import { mapState } from "vuex";
 import { deepCopy } from '@/utils/utils'
 import generateID from '@/utils/utils'
@@ -133,7 +134,10 @@ export default {
         'canvasStyleData',
         'editor',
     ]),
-
+    created() {
+        // 全局监听按键事件
+        listenGlobalKeyDown()
+    },
     methods: {
         showPanle(id) {
             this.show = !this.show
