@@ -44,14 +44,22 @@
                     高级<v-icon>mdi-arrow-up-right-bold</v-icon>
                 </v-tab>
             </v-tabs>
-            <v-tabs-items v-model="tab">
+            <v-tabs-items 
+                v-if="curComponent" 
+                v-model="tab">
                 <v-tab-item
                     v-for="i in 3"
                     :key="i"
                     :value="'tab-' + i"
                 >
-                    <v-card flat>
-                    <v-card-text>{{ text }}</v-card-text>
+                    <v-card flat v-if="i == 1">
+                        <component :is="curComponent.component + 'Attr'" />
+                    </v-card>
+                    <v-card flat v-else-if="i == 2">
+                        {{ text }}
+                    </v-card>
+                    <v-card flat v-else>
+                        {{ text }}
                     </v-card>
                 </v-tab-item>
             </v-tabs-items>
@@ -160,11 +168,10 @@ export default {
 .home {
     height: 100vh;
     background: #fff;
-
+    overflow: hidden;
     main {
         height: calc(100% - 64px);
         position: relative;
-
         .left {
             position: absolute;
             height: 100%;
@@ -187,6 +194,7 @@ export default {
             .el-select {
                 width: 100%;
             }
+            overflow: auto;
         }
 
 
