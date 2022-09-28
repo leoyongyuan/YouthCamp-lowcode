@@ -1,8 +1,41 @@
 <template>
     <div>
         <div class="toolbar">
-            <v-btn class="gap" elevation="2" @click="undo">撤消</v-btn>
-            <v-btn class="gap" elevation="2" @click="redo">重做</v-btn>
+            <v-btn class="gap" elevation="1" @click="undo">撤消</v-btn>
+            <v-btn class="gap" elevation="1" @click="redo">回溯</v-btn>
+            <el-popover
+                placement="bottom-start"
+                width="200"
+                trigger="hover"
+            >
+                <ul>
+                    <li>ctrl / command + c : 复制 </li>
+                    <br>
+                    <li>ctrl / command + v : 粘贴 </li>
+                    <br>
+                    <li>ctrl / command + x : 剪切 </li>
+                    <br>
+                    <li>ctrl / command + y : 重做 </li>
+                    <br>
+                    <li>ctrl / command + z : 撤销 </li>  
+                    <br>
+                    <li>ctrl / command + s : 保存 </li>  
+                    <br> 
+                    <li>ctrl / command + p : 预览 </li>  
+                    <br> 
+                    <li>ctrl / command + d : 删除 </li> 
+                    <br>
+                    <li>ctrl / command + e : 清空 </li>   
+                    <br> 
+                    <li>Backspace : 撤销 </li>  
+                    <br>
+                    <li>Delete : 撤销 </li>  
+                </ul>
+                <div slot="reference" class="shortcut">
+                    <span class="el-icon-question"></span>
+                    <span>快捷键</span>
+                </div>
+            </el-popover>
         </div>     
     </div>
 </template>
@@ -12,7 +45,6 @@ import { mapState } from 'vuex'
 export default {
     data() {
         return {
-
         }
     },
 
@@ -37,6 +69,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+ul li{
+    list-style-type:none;
+}
+.shortcut{
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 14px;
+    color: #606266;
+        span {
+            margin-left: 10px;
+        }
+}
+
+.shortcut:hover{
+    color: #409EFF;
+    cursor: pointer;
+}
 .toolbar {
     padding: 15px 10px;
     white-space: nowrap;
