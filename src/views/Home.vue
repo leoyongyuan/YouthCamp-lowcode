@@ -62,7 +62,7 @@
                         {{ text }}
                     </v-card>
                     <v-card flat v-else-if="i == 3">
-                        {{ text }}
+                        <component :is="curComponent.component + 'SuperAttr'" />
                     </v-card>
                 </v-tab-item>
             </v-tabs-items>

@@ -77,7 +77,7 @@ import 'ace-builds/src-min-noconflict/ext-language_tools'
 import { mapState } from 'vuex'
 
 export default {
-    name: 'AceDemo',
+    name: 'AceDemoJSON',
     data() {
         return {
             editor: null,
@@ -104,7 +104,7 @@ export default {
     },
 
     mounted() {
-        ace.config.set("basePath", "https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/");
+        // ace.config.set("basePath", "https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/");
         //快速开始-demo
             this.editor = ace.edit(this.$refs.ace, {
             maxLines: 36, // 最大行数，超过会自动出现滚动条
