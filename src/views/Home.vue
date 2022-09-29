@@ -14,6 +14,7 @@
                             v-bind="attrs"
                             v-on="on"
                             class="chip"
+                            color="#B2DFDB"
                             @click="showPanle(index)"
                         >
                         <v-icon
@@ -228,6 +229,9 @@ export default {
                 width: 100%;
             }
             overflow: auto;
+            .col {
+                background-color: #80DEEA;
+            }
         }
 
 
@@ -253,7 +257,7 @@ export default {
         width: 250px;
         left: 70px;
         top: 66px;
-        background-color: #fff;
+        background-color: #E0F2F1;
         border: 1px solid #ddd;
     }
 

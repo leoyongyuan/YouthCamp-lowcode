@@ -130,6 +130,7 @@ ul li{
     .gap {
         margin-left: 10px;
         margin-right: 10px;
+        color: #80CBC4;
     }
     .canvas-config {
         display: inline-block;

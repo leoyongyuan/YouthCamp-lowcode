@@ -41,7 +41,7 @@
             elevation="2"
             raised
             small
-            color="success"
+            color="#81C784"
             @click="getCode"
             >
             <v-icon>mdi-file-upload-outline</v-icon>保存提交
@@ -51,7 +51,7 @@
             elevation="2"
             raised
             small
-            color="primary"
+            color="#B3E5FC"
             @click="setCode"
             >
             <v-icon>mdi-update</v-icon>更新代码
@@ -104,7 +104,7 @@ export default {
     },
 
     mounted() {
-        // ace.config.set("basePath", "https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/");
+        ace.config.set("basePath", "https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/");
         //快速开始-demo
             this.editor = ace.edit(this.$refs.ace, {
             maxLines: 36, // 最大行数，超过会自动出现滚动条
@@ -177,7 +177,7 @@ export default {
     float: right;
     margin-left: 10px;
     margin-right: 10px;
-    margin-top: -10px;
+    margin-top: -2px;
 }
 
 </style>
