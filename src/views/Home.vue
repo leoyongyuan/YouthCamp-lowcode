@@ -76,10 +76,10 @@
                 <ComponentList />
             </div>
             <div class="panle" style="width:600px"  v-else-if="select === 1">
-                <AceEditor />
+                <AceEditorJSON />
             </div>
-            <div class="panle" v-else-if="select === 2">
-                3
+            <div class="panle" style="width:600px;background-color:#333333;" v-else-if="select === 2">
+                <AceEditorJS />
             </div>
             <div class="panle" v-else-if="select === 3">
                 4
@@ -97,7 +97,8 @@ import { mapState } from "vuex";
 import { deepCopy } from '@/utils/utils'
 import generateID from '@/utils/utils'
 import CanvasAttr from "@/components/CanvasAttr.vue";
-import AceEditor from "@/components/AceEditor.vue";
+import AceEditorJSON from "@/components/AceEditorJSON.vue";
+import AceEditorJS from "../components/AceEditorJS.vue";
 
 export default {
     name: 'Home',
@@ -132,7 +133,8 @@ export default {
     Editor,
     ComponentList,
     CanvasAttr,
-    AceEditor
+    AceEditorJSON,
+    AceEditorJS
 },
 
     computed: mapState([
