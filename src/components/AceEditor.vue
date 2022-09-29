@@ -37,21 +37,21 @@
         </el-col>
       <div ref="ace" class="ace-editor"/>
         <v-btn
-            class="ma-1"
-            outlined
-            color="indigo"
+            class="gap-2"
             elevation="2"
+            raised
             small
+            color="success"
             @click="getCode"
             >
-            <v-icon>mdi-progress-upload</v-icon>保存提交
+            <v-icon>mdi-file-upload-outline</v-icon>保存提交
         </v-btn>
         <v-btn
-            class="ma-1"
-            outlined
-            color="indigo"
+            class="gap-2"
             elevation="2"
+            raised
             small
+            color="primary"
             @click="setCode"
             >
             <v-icon>mdi-update</v-icon>更新代码
@@ -110,7 +110,7 @@ export default {
             maxLines: 36, // 最大行数，超过会自动出现滚动条
             minLines: 36, // 最小行数，还未到最大行数时，编辑器会自动伸缩大小
             fontSize: 14, // 编辑器内字体大小
-            theme: 'ace/theme/kuroir', // 默认设置的主题
+            theme: 'ace/theme/github', // 默认设置的主题
             mode: 'ace/mode/json5', // 默认设置的语言模式
             tabSize: 4,// 制表符设置为 4 个空格大小
             readOnly: false,//只读
@@ -173,20 +173,11 @@ export default {
     margin: 10px;
 }
 
-/* .ace-toolbar {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+.gap-2 {
+    float: right;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: -10px;
 }
-
-.ace-toolbar > button {
-    margin-left: 20px;
-}
-
-.box {
-    background-color: blue;
-    width: 100px;
-    height: 100px;
-} */
 
 </style>
