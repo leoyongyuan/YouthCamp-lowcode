@@ -59,7 +59,7 @@
                         <component :is="curComponent.component + 'Attr'" />
                     </v-card>
                     <v-card flat v-else-if="i == 2">
-                        {{ text }}
+                        <component :is="curComponent.component + 'ComponentLink'" />
                     </v-card>
                     <v-card flat v-else-if="i == 3">
                         <component :is="curComponent.component + 'SuperAttr'" />
@@ -105,7 +105,6 @@ export default {
     data() {
         return {
             tab: null,
-            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
             list: [ 
                 {
                     icon: 'mdi-puzzle',
