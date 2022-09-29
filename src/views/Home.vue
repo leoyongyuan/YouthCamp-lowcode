@@ -57,7 +57,6 @@
                 >
                     <v-card flat v-if="i == 1">
                         <component :is="curComponent.component + 'Attr'" />
-                        <!-- <CanvasAttr /> -->
                     </v-card>
                     <v-card flat v-else-if="i == 2">
                         {{ text }}
@@ -72,17 +71,17 @@
             </v-card>
           </section>
         </main>
-        <div v-show="show" class="panle">
-            <div v-if="select === 0">
+        <div v-show="show">
+            <div class="panle" v-if="select === 0">
                 <ComponentList />
             </div>
-            <div v-else-if="select === 1">
-                2
+            <div class="panle" style="width:600px"  v-else-if="select === 1">
+                <AceEditor />
             </div>
-            <div v-else-if="select === 2">
+            <div class="panle" v-else-if="select === 2">
                 3
             </div>
-            <div v-else-if="select === 3">
+            <div class="panle" v-else-if="select === 3">
                 4
             </div>
         </div>
@@ -98,6 +97,7 @@ import { mapState } from "vuex";
 import { deepCopy } from '@/utils/utils'
 import generateID from '@/utils/utils'
 import CanvasAttr from "@/components/CanvasAttr.vue";
+import AceEditor from "@/components/AceEditor.vue";
 
 export default {
     name: 'Home',
@@ -128,11 +128,12 @@ export default {
         }
     },
     components: {
-        Toolbar,
-        Editor,
-        ComponentList,
-        CanvasAttr
-    },
+    Toolbar,
+    Editor,
+    ComponentList,
+    CanvasAttr,
+    AceEditor
+},
 
     computed: mapState([
         'componentData',

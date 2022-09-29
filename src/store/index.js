@@ -43,6 +43,10 @@ export default new Vuex.Store({
     ...copy.mutations,
     ...layer.mutations,
 
+    acesetCanvasData(state, value ) {
+        state.canvasStyleData = value
+    },
+
     addComponent(state, { component, index }) {
         if (index !== undefined) {
             state.componentData.splice(index, 0, component)

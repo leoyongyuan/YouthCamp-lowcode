@@ -7,6 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "ace-builds": "^1.11.2",
     "core-js": "^3.8.3",
     "element-ui": "^2.15.10",
     "mathjs": "^11.2.1",
@@ -24,6 +25,7 @@
     "sass-loader": "^12.0.0",
     "vue-cli-plugin-vuetify": "~2.5.8",
     "vue-template-compiler": "^2.6.14",
+    "vue2-ace-editor": "^0.0.15",
     "vuetify-loader": "^1.7.0"
   },
   "browserslist": [
