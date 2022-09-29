@@ -32,6 +32,12 @@ export default {
             activeName: '',
         }
     },
+    watch: {
+        'curComponent':function () {
+            this.curComponent()
+        }
+    },
+
     computed: {
         styleKeys() {
             if (this.curComponent) {

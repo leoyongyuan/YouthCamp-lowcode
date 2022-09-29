@@ -43,8 +43,12 @@ export default new Vuex.Store({
     ...copy.mutations,
     ...layer.mutations,
 
-    acesetCanvasData(state, value ) {
+    acesetCanvasData(state, value) {
         state.canvasStyleData = value
+    },
+
+    acesetcurComponent(state, value) {
+        state.curComponent = value
     },
 
     addComponent(state, { component, index }) {

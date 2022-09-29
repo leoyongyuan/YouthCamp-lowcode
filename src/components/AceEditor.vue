@@ -64,6 +64,7 @@ export default {
     data() {
         return {
             editor: null,
+            obj: null,
             event: function(){},
             eventobj: {
                 "fn1": function() {
@@ -74,7 +75,14 @@ export default {
     },
     computed: mapState([
         'canvasStyleData',
+        'curComponent',
     ]),
+    watch: {
+        'curComponent': function() {
+            this.setCode()
+        },
+    },
+
     mounted() {
         ace.config.set("basePath", "https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/");
         //快速开始-demo
@@ -90,7 +98,9 @@ export default {
             enableLiveAutocompletion: true, //boolean 或 completer数组,
             enableSnippets: true // boolean
         });
-        this.editor.setValue(JSON.stringify(this.canvasStyleData, null, 4))
+
+        this.obj = this.curComponent || this.canvasStyleData
+        this.editor.setValue(JSON.stringify(this.obj, null, 4))
 
         this.editor2 = ace.edit(this.$refs.ace2, {
             maxLines: 24, // 最大行数，超过会自动出现滚动条
@@ -109,7 +119,8 @@ export default {
     },
     methods: {
         setCode() {
-            this.editor.setValue(JSON.stringify(this.canvasStyleData, null, 4))
+            this.obj = this.curComponent || this.canvasStyleData
+            this.editor.setValue(JSON.stringify(this.obj, null, 4))
         },
 
         clickaddevent() {
@@ -122,7 +133,11 @@ export default {
 
         getCode() {
             let str = this.editor.getValue()
-            this.$store.commit('acesetCanvasData', JSON.parse(str))
+            if (this.obj === this.canvasStyleData)
+                this.$store.commit('acesetCanvasData', JSON.parse(str))
+            else
+                this.$store.commit('acesetcurComponent', JSON.parse(str))
+            // console.log(JSON.parse(str))
         },  
 
         codeComplete: function () {
