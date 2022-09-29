@@ -1,44 +1,61 @@
 <template>
     <div class="ace">
-      <!-- <div :style="obj" @click="clickaddevent">123</div> -->
+        <v-btn
+        class="gap"
+        elevation="2"
+        raised
+        small
+        @click="openSearchBox"
+        ><v-icon>mdi-magnify-expand</v-icon></v-btn>
+        <v-btn
+        class="gap"
+        elevation="2"
+        raised
+        small
+        @click="openReplaceBox"
+        ><v-icon>mdi-wrench-cog-outline</v-icon></v-btn>
+        <el-col :span="18" class="gap">
+            <el-dropdown trigger="click">
+            <span class="el-dropdown-link">
+                更换风格<i class="el-icon-arrow-down el-icon--right"></i>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+                <div
+                    @click="updateEditorTheme('ace/theme/github')">
+                    <el-dropdown-item><v-icon>mdi-github</v-icon>GitHub</el-dropdown-item>
+                </div>
+                <div 
+                    @click="updateEditorTheme('ace/theme/kuroir')">
+                    <el-dropdown-item><v-icon>mdi-atom</v-icon>Kuroir</el-dropdown-item>
+                </div>
+                <div
+                    @click="updateEditorTheme('ace/theme/one_dark')">
+                    <el-dropdown-item><v-icon>mdi-brightness-4</v-icon>Dark</el-dropdown-item>
+                </div>
+            </el-dropdown-menu>
+            </el-dropdown>
+        </el-col>
       <div ref="ace" class="ace-editor"/>
-      <!-- <div ref="ace2" class="ace-editor"/> -->
-      <div class="ace-toolbar">
-        <button @click="getCode">获取CSS</button>
-        <button @click="setCode">设置</button>
-        <button @click="getCodeJS">获取JS</button>
-        <!-- <button v-on:click="codeComplete">代码完成</button>
-        <button v-on:click="cancelCodeComplete">取消代码完成</button> -->
-      </div>
-      <!-- <div class="ace-toolbar">
-        <button v-on:click="fillValue">填充值</button>
-        <button v-on:click="clearValue">清空值</button>
-      </div> -->
-      <!-- <div class="ace-toolbar">
-        <button v-on:click="getSelectText">获取选中文本</button>
-        <button v-on:click="insert">光标处插入hello</button>
-        <button v-on:click="getLineNum">获取总行数</button>
-        <button v-on:click="getLineAndRow">获取光标所在行与列</button>
-        <button v-on:click="gotoLine">光标跳转到1行1列</button>
-      </div> -->
-      <!-- <div class="ace-toolbar">
-        <button v-on:click="setReadOnly(true)">编辑器只读</button>
-        <button v-on:click="setReadOnly(false)">编辑器可编辑</button>
-      </div> -->
-      <div class="ace-toolbar">
-        <button v-on:click="openSearchBox">打开编辑器搜素框</button>
-        <button v-on:click="openReplaceBox">打开编辑器替换框</button>
-      </div>
-      <div class="ace-toolbar">
-        <button v-on:click="updateEditorLanguage('ace/mode/json5')">更改编辑器语言：json</button>
-        <!-- <button v-on:click="updateEditorLanguage('ace/mode/xml')">更改编辑器语言：xml</button>
-        <button v-on:click="updateEditorLanguage('ace/mode/javascript')">更改编辑器语言：javascript</button> -->
-      </div>
-      <div class="ace-toolbar">
-        <button v-on:click="updateEditorTheme('ace/theme/kuroir')">更改编辑器主题：kuroir</button>
-        <button v-on:click="updateEditorTheme('ace/theme/one_dark')">更改编辑器主题：one_dark</button>
-        <button v-on:click="updateEditorTheme('ace/theme/github')">更改编辑器主题：github</button>
-      </div>
+        <v-btn
+            class="ma-1"
+            outlined
+            color="indigo"
+            elevation="2"
+            small
+            @click="getCode"
+            >
+            <v-icon>mdi-progress-upload</v-icon>保存提交
+        </v-btn>
+        <v-btn
+            class="ma-1"
+            outlined
+            color="indigo"
+            elevation="2"
+            small
+            @click="setCode"
+            >
+            <v-icon>mdi-update</v-icon>更新代码
+        </v-btn>
     </div>
 </template>
 
@@ -83,15 +100,15 @@ export default {
         },
         'canvasStyleData':function() {
             this.setCode()
-        }
+        },
     },
 
     mounted() {
         ace.config.set("basePath", "https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/");
         //快速开始-demo
             this.editor = ace.edit(this.$refs.ace, {
-            maxLines: 24, // 最大行数，超过会自动出现滚动条
-            minLines: 12, // 最小行数，还未到最大行数时，编辑器会自动伸缩大小
+            maxLines: 36, // 最大行数，超过会自动出现滚动条
+            minLines: 36, // 最小行数，还未到最大行数时，编辑器会自动伸缩大小
             fontSize: 14, // 编辑器内字体大小
             theme: 'ace/theme/kuroir', // 默认设置的主题
             mode: 'ace/mode/json5', // 默认设置的语言模式
@@ -104,34 +121,11 @@ export default {
 
         this.obj = this.curComponent || this.canvasStyleData
         this.editor.setValue(JSON.stringify(this.obj, null, 4))
-
-        this.editor2 = ace.edit(this.$refs.ace2, {
-            maxLines: 24, // 最大行数，超过会自动出现滚动条
-            minLines: 12, // 最小行数，还未到最大行数时，编辑器会自动伸缩大小
-            fontSize: 14, // 编辑器内字体大小
-            theme: 'ace/theme/one_dark', // 默认设置的主题
-            mode: 'ace/mode/javascript', // 默认设置的语言模式
-            tabSize: 4,// 制表符设置为 4 个空格大小
-            readOnly: false,//只读
-            enableBasicAutocompletion: true, //boolea 或 completer数组,
-            enableLiveAutocompletion: true, //boolean 或 completer数组,
-            enableSnippets: true // boolean
-        });
-        
-        this.editor2.setValue(`(function () {\n    \n})`)
     },
     methods: {
         setCode() {
             this.obj = this.curComponent || this.canvasStyleData
             this.editor.setValue(JSON.stringify(this.obj, null, 4))
-        },
-
-        clickaddevent() {
-            this.event()
-        },
-
-        getCodeJS() {
-            this.event = eval("(false || "+this.editor2.getValue()+")")
         },
 
         getCode() {
@@ -140,59 +134,16 @@ export default {
                 this.$store.commit('acesetCanvasData', JSON.parse(str))
             else
                 this.$store.commit('acesetcurComponent', JSON.parse(str))
-        },  
-
-        codeComplete: function () {
-        this.editor.setOptions({
-            enableBasicAutocompletion: true, //启动基本自动完成
-            enableLiveAutocompletion: true, //启动实时自动完成
-        })
         },
-        cancelCodeComplete: function () {
-        this.editor.setOptions({
-            autoScrollEditorIntoView: false,
-            copyWithEmptySelection: false,
-        })
-        },
-        fillValue: function () {
-        this.editor.setValue("hello world", -1)
-        },
-        clearValue: function () {
-        this.editor.setValue("")
-        },
-        getSelectText: function () {
-        let text = this.editor.getSelectedText()
-        alert("选中文本为:" + text)
-        },
-        insert: function () {
-        this.editor.insert("hello");
-        },
-        getLineNum: function () {
-        let lineNum = this.editor.session.getLength();
-        alert("总行数为:" + lineNum)
-        },
-        getLineAndRow: function () {
-        let cursor = this.editor.selection.getCursor();
-        alert("当前光标所在行列:" + JSON.stringify(cursor))
-        },
-        gotoLine: function () {
-        this.editor.gotoLine(1, 1);
-        },
-        setReadOnly: function (readOnly) {
-        this.editor.setReadOnly(readOnly)
-        },
-
+        
         openSearchBox: function () {
-        this.editor.execCommand('find');
+            this.editor.execCommand('find');
         },
         openReplaceBox: function () {
-        this.editor.execCommand('replace');
-        },
-        updateEditorLanguage: function (language) {
-        this.editor.setOption("mode", language);
+            this.editor.execCommand('replace');
         },
         updateEditorTheme: function (theme) {
-        this.editor.setTheme(theme);
+            this.editor.setTheme(theme);
         },
     }
 }
@@ -200,10 +151,29 @@ export default {
 
 <style scoped>
 .ace-editor {
-    margin-bottom: 20px;
+    margin-bottom: 7px;
 }
 
-.ace-toolbar {
+.gap {
+    margin: 7px;
+}
+
+.el-dropdown-link {
+    cursor: pointer;
+    color: #409EFF;
+}
+
+.el-icon-arrow-down {
+    font-size: 12px;
+}
+.demonstration {
+    display: block;
+    color: #8492a6;
+    font-size: 14px;
+    margin: 10px;
+}
+
+/* .ace-toolbar {
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -217,6 +187,6 @@ export default {
     background-color: blue;
     width: 100px;
     height: 100px;
-}
+} */
 
 </style>
