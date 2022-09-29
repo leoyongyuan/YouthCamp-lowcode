@@ -5,6 +5,8 @@ import snapshot from './snapshot'
 import contextmenu from './contextmenu'
 import copy from './copy'
 import layer from './layer'
+import { VLabel } from 'vuetify/lib'
+import { deepCopy } from '@/utils/utils'
 
 Vue.use(Vuex)
 
@@ -48,6 +50,12 @@ export default new Vuex.Store({
     },
 
     acesetcurComponent(state, value) {
+        for (let i = 0; i < state.componentData.length;i ++ ) {
+            if (state.componentData[i].id === value.id) {
+                state.componentData.splice(i,1)
+            }
+        }
+        state.componentData.push(value)
         state.curComponent = value
     },
 

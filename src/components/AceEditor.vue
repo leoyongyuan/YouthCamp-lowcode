@@ -81,6 +81,9 @@ export default {
         'curComponent': function() {
             this.setCode()
         },
+        'canvasStyleData':function() {
+            this.setCode()
+        }
     },
 
     mounted() {
@@ -133,11 +136,10 @@ export default {
 
         getCode() {
             let str = this.editor.getValue()
-            if (this.obj === this.canvasStyleData)
+            if (!this.curComponent)
                 this.$store.commit('acesetCanvasData', JSON.parse(str))
             else
                 this.$store.commit('acesetcurComponent', JSON.parse(str))
-            // console.log(JSON.parse(str))
         },  
 
         codeComplete: function () {

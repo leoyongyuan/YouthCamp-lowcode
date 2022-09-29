@@ -32,12 +32,6 @@ export default {
             activeName: '',
         }
     },
-    watch: {
-        'curComponent':function () {
-            this.curComponent()
-        }
-    },
-
     computed: {
         styleKeys() {
             if (this.curComponent) {
@@ -54,6 +48,11 @@ export default {
     methods: {
         isIncludesColor(str) {
             return str.toLowerCase().includes('color')
+        },
+
+        setCode() {
+            console.log(this.curComponent)
+            this.$store.commit('acesetcurComponent', this.curComponent)
         },
     },
 }
