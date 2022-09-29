@@ -90,7 +90,7 @@ export default {
             enableLiveAutocompletion: true, //boolean 或 completer数组,
             enableSnippets: true // boolean
         });
-        this.editor.setValue(`(function () {\n    \n})`)
+        this.editor.setValue(`(function () {\n    // start Code...   \n})`)
     },
     methods: {
         getCode() {

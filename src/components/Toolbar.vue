@@ -7,11 +7,36 @@
                 <span>*</span>
                 <input v-model="canvasStyleData.height">
             </div>
-            <v-btn class="gap" elevation="1" @click="undo"><v-icon>mdi-arrow-u-left-top</v-icon></v-btn>
-            <v-btn class="gap" elevation="1" @click="redo"><v-icon>mdi-arrow-u-right-top</v-icon></v-btn>
-            <v-btn class="gap" elevation="1"><v-icon>mdi-content-save-all-outline</v-icon></v-btn>
-            <v-btn class="gap" elevation="1"><v-icon>mdi-archive-eye-outline</v-icon></v-btn>
-            <v-btn class="gap" elevation="1"><v-icon>mdi-delete-circle-outline</v-icon></v-btn>
+            <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn class="gap" elevation="1" @click="undo" v-on="on" v-bind="attrs"><v-icon>mdi-arrow-u-left-top</v-icon></v-btn>
+                    </template>
+                    <span>撤回</span>
+            </v-tooltip>
+            <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn class="gap" v-on="on" v-bind="attrs" elevation="1" @click="redo"><v-icon>mdi-arrow-u-right-top</v-icon></v-btn>
+                    </template>
+                    <span>回溯</span>
+            </v-tooltip>
+            <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn class="gap" v-on="on" v-bind="attrs" elevation="1"><v-icon>mdi-content-save-all-outline</v-icon></v-btn>
+                    </template>
+                    <span>保存</span>
+            </v-tooltip>
+            <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn class="gap" v-on="on" v-bind="attrs" elevation="1"><v-icon>mdi-archive-eye-outline</v-icon></v-btn>
+                    </template>
+                    <span>预览</span>
+            </v-tooltip>
+            <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn class="gap" v-on="on" v-bind="attrs" elevation="1"><v-icon>mdi-delete-circle-outline</v-icon></v-btn>
+                    </template>
+                    <span>清空</span>
+            </v-tooltip>
             
             <el-popover
                 placement="bottom-start"
