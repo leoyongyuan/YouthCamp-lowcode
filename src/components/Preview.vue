@@ -18,7 +18,11 @@
                     height: changeStyleWithScale(canvasStyleData.height) + 'px',
                 }"
             >
-
+                <ComponentWrapper 
+                    v-for="(item, index) in componentData"
+                    :key="index"
+                    :config="item"
+                />
             </div>
         </div>
     </div>
@@ -27,11 +31,12 @@
 <script>
 import { getStyle, getCanvasStyle, changeStyleWithScale } from '@/utils/style'
 import { mapState } from 'vuex'
+import ComponentWrapper from './ComponentWrapper.vue'
 
 export default {
     model: {
-        prop: 'show',
-        event: 'change',
+        prop: "show",
+        event: "change",
     },
     props: {
         show: {
@@ -44,20 +49,19 @@ export default {
         },
     },
     computed: mapState([
-        'componentData',
-        'canvasStyleData',
-        'curComponent',
+        "componentData",
+        "canvasStyleData",
+        "curComponent",
     ]),
     methods: {
         getStyle,
         getCanvasStyle,
         changeStyleWithScale,
-        
         close() {
-            this.$emit('change', false)
+            this.$emit("change", false);
         },
     },
-    
+    components: { ComponentWrapper }
 }
 </script>
 
