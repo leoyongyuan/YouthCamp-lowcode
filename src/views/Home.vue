@@ -100,6 +100,7 @@ import generateID from '@/utils/utils'
 import CanvasAttr from "@/components/CanvasAttr.vue";
 import AceEditorJSON from "@/components/AceEditorJSON.vue";
 import AceEditorJS from "../components/AceEditorJS.vue";
+import LinkComponent from "@/custom-component/common/LinkComponent.vue";
 
 export default {
     name: 'Home',
@@ -134,7 +135,8 @@ export default {
     ComponentList,
     CanvasAttr,
     AceEditorJSON,
-    AceEditorJS
+    AceEditorJS,
+    LinkComponent
 },
 
     computed: mapState([

@@ -67,6 +67,10 @@ export default new Vuex.Store({
         }
     },
 
+    setCanvasStyle(state, style) {
+        state.canvasStyleData = style
+    },
+
     setCurComponent(state, { component, index }) {
         state.curComponent = component
         state.curComponentIndex = index
