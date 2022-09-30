@@ -24,6 +24,42 @@
                     <span> {{ item.tips }} </span>
                 </v-tooltip>
             </div>
+            <template>
+                <v-dialog
+                    v-model="dialog"
+                    width="600px"
+                >
+                <template v-slot:activator="{ on, attrs }">
+                    <v-icon
+                        class="que"
+                        color="#607D8B"
+                        large
+                        v-bind="attrs"
+                        v-on="on"
+                    >
+                        mdi-file-question-outline
+                    </v-icon>
+                </template>
+                    <v-card>
+                        <v-card-title>
+                        <span class="text-h5">如何使用-LowCode</span>
+                        </v-card-title>
+                            <v-card-text>
+                                {{ text }}
+                            </v-card-text>
+                        <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn
+                            color="green darken-1"
+                            text
+                            @click="dialog = false"
+                        >
+                            OK
+                        </v-btn>
+                        </v-card-actions>
+                    </v-card>
+                    </v-dialog>
+                </template>
           </section>
           <section class="center">
             <div 
@@ -101,12 +137,15 @@ import CanvasAttr from "@/components/CanvasAttr.vue";
 import AceEditorJSON from "@/components/AceEditorJSON.vue";
 import AceEditorJS from "../components/AceEditorJS.vue";
 import LinkComponent from "@/custom-component/common/LinkComponent.vue";
+import { text } from '@/utils/text'
 
 export default {
     name: 'Home',
     data() {
         return {
             tab: null,
+            dialog: false,
+            text: text,
             list: [ 
                 {
                     icon: 'mdi-puzzle',
@@ -237,6 +276,10 @@ export default {
             .chip {
                 margin: 10px;
                 margin-top: 40px;
+            }
+            .que {
+                margin-top: 200px;
+                margin-left: 17px;
             }
         }
         .right {
