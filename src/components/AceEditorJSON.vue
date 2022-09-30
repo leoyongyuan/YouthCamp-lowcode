@@ -41,7 +41,7 @@
             elevation="2"
             raised
             small
-            color="#81C784"
+            color="#8BC34A"
             @click="getCode"
             >
             <v-icon>mdi-file-upload-outline</v-icon>保存提交

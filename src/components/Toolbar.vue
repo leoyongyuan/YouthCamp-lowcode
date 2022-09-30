@@ -21,7 +21,7 @@
             </v-tooltip>
             <v-tooltip bottom>
                 <template v-slot:activator="{ on, attrs }">
-                    <v-btn class="gap" v-on="on" v-bind="attrs" elevation="1"><v-icon>mdi-content-save-all-outline</v-icon></v-btn>
+                    <v-btn class="gap" v-on="on" v-bind="attrs" elevation="1" @click="save"><v-icon>mdi-content-save-all-outline</v-icon></v-btn>
                     </template>
                     <span>保存</span>
             </v-tooltip>
@@ -33,7 +33,7 @@
             </v-tooltip>
             <v-tooltip bottom>
                 <template v-slot:activator="{ on, attrs }">
-                    <v-btn class="gap" v-on="on" v-bind="attrs" elevation="1"><v-icon>mdi-delete-circle-outline</v-icon></v-btn>
+                    <v-btn class="gap" v-on="on" v-bind="attrs" elevation="1" @click="clearCanvas"><v-icon>mdi-delete-circle-outline</v-icon></v-btn>
                     </template>
                     <span>清空</span>
             </v-tooltip>
@@ -98,6 +98,18 @@ export default {
 
         redo() {
             this.$store.commit('redo')
+        },
+
+        save() {
+            localStorage.setItem('canvasData', JSON.stringify(this.componentData))
+            localStorage.setItem('canvasStyle', JSON.stringify(this.canvasStyleData))
+            this.$message.success('保存成功')
+        },
+
+        clearCanvas() {
+            this.$store.commit('setCurComponent', { component: null, index: null })
+            this.$store.commit('setComponentData', [])
+            this.$store.commit('recordSnapshot')
         },
     }
 }

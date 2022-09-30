@@ -1,4 +1,7 @@
 export const styleData = [
+    { key: 'left', label: 'x 坐标' },
+    { key: 'top', label: 'y 坐标' },
+    { key: 'rotate', label: '旋转角度' },
     { key: 'width', label: '宽' },
     { key: 'height', label: '高' },
     { key: 'color', label: '颜色' },
@@ -17,6 +20,9 @@ export const styleData = [
 ]
 
 export const styleMap = {
+    left: 'x 坐标',
+    top: 'y 坐标',
+    rotate: '旋转角度',
     width: '宽',
     height: '高',
     color: '颜色',

@@ -145,10 +145,30 @@ export default {
         'editor',
     ]),
     created() {
+        this.restore()
         // 全局监听按键事件
         listenGlobalKeyDown()
     },
     methods: {
+        restore() {
+            // 用保存的数据恢复画布
+            if (localStorage.getItem('canvasData')) {
+                this.$store.commit('setComponentData', this.resetID(JSON.parse(localStorage.getItem('canvasData'))))
+            }
+
+            if (localStorage.getItem('canvasStyle')) {
+                this.$store.commit('setCanvasStyle', JSON.parse(localStorage.getItem('canvasStyle')))
+            }
+        },
+
+        resetID(data) {
+            data.forEach(item => {
+                item.id = generateID()
+            })
+
+            return data
+        },
+
         showPanle(id) {
             this.show = !this.show
             this.select = id
