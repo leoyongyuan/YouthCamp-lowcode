@@ -49,11 +49,6 @@ export default {
         isIncludesColor(str) {
             return str.toLowerCase().includes('color')
         },
-
-        setCode() {
-            console.log(this.curComponent)
-            this.$store.commit('acesetcurComponent', this.curComponent)
-        },
     },
 }
 </script>
