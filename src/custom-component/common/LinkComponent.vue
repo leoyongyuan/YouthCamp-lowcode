@@ -22,7 +22,6 @@
                     :label="e.label"
                 ></el-option>
             </el-select>
-            <p>事件触发时，当前组件要修改的属性</p>
             <div v-for="(e, i) in item.style" :key="i" class="attr-container">
                 <el-select v-model="e.key" @change="e.value = ''">
                     <el-option

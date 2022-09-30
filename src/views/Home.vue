@@ -60,7 +60,7 @@
                         <component :is="curComponent.component + 'Attr'" />
                     </v-card>
                     <v-card flat v-else-if="i == 2">
-                        <component :is="curComponent.component + 'ComponentLink'" />
+                        <LinkComponent />
                     </v-card>
                     <v-card flat v-else-if="i == 3">
                         <component :is="curComponent.component + 'SuperAttr'" />
