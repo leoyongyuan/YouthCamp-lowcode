@@ -21,15 +21,15 @@
             </v-tooltip>
             <v-tooltip bottom>
                 <template v-slot:activator="{ on, attrs }">
-                    <v-btn class="gap" v-on="on" v-bind="attrs" elevation="1" @click="save"><v-icon>mdi-content-save-all-outline</v-icon></v-btn>
+                    <v-btn class="gap" v-on="on" v-bind="attrs" elevation="1" @click="preview(false)"><v-icon>mdi-archive-eye-outline</v-icon></v-btn>
                     </template>
-                    <span>保存</span>
+                    <span>预览</span>
             </v-tooltip>
             <v-tooltip bottom>
                 <template v-slot:activator="{ on, attrs }">
-                    <v-btn class="gap" v-on="on" v-bind="attrs" elevation="1"><v-icon>mdi-archive-eye-outline</v-icon></v-btn>
+                    <v-btn class="gap" v-on="on" v-bind="attrs" elevation="1" @click="save"><v-icon>mdi-content-save-all-outline</v-icon></v-btn>
                     </template>
-                    <span>预览</span>
+                    <span>保存</span>
             </v-tooltip>
             <v-tooltip bottom>
                 <template v-slot:activator="{ on, attrs }">
@@ -71,15 +71,23 @@
                     <span>快捷键</span>
                 </div>
             </el-popover>
-        </div>     
+        </div>    
+        
+        <Preview v-model="isShowPreview" :is-screenshot="isScreenshot" @change="handlePreviewChange" />
     </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import Preview from './Preview.vue'
 export default {
+    components: {
+        Preview,
+    },
     data() {
         return {
+            isShowPreview: false,
+            isScreenshot: false,
         }
     },
 
@@ -100,6 +108,12 @@ export default {
             this.$store.commit('redo')
         },
 
+        preview(isScreenshot) {
+            this.isScreenshot = isScreenshot
+            this.isShowPreview = true
+            this.$store.commit('setEditMode', 'preview')
+        },
+
         save() {
             localStorage.setItem('canvasData', JSON.stringify(this.componentData))
             localStorage.setItem('canvasStyle', JSON.stringify(this.canvasStyleData))
@@ -110,6 +124,10 @@ export default {
             this.$store.commit('setCurComponent', { component: null, index: null })
             this.$store.commit('setComponentData', [])
             this.$store.commit('recordSnapshot')
+        },
+
+        handlePreviewChange() {
+            this.$store.commit('setEditMode', 'edit')
         },
     }
 }
