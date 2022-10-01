@@ -60,6 +60,25 @@ const list = [
             borderRadius: '',
         },
     },
+    {
+        component: 'VText',
+        label: '文本',
+        propValue: '文本',
+        icon: 'mdi-format-text',
+        style: {
+            width: 80,
+            height: 48,
+            borderWidth: 1,
+            borderColor: '',
+            borderRadius: '',
+            fontSize: 20,
+            fontWeight: 400,
+            lineHeight: '',
+            textAlign: '',
+            color: '',
+            backgroundColor: '',
+        },
+    },
 ]
 
 for (let i = 0 ; i < list.length; i++) {
