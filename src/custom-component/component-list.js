@@ -99,6 +99,25 @@ const list = [
             textAlign: '',
         },
     },
+    {
+        component: 'VLink',
+        label: '链接',
+        propValue: {
+            text: '添加链接',
+            link: '',
+        },
+        icon: 'el-icon-link',
+        style: {
+            width: 200,
+            height: 28,
+            fontSize: 14,
+            fontWeight: 400,
+            lineHeight: '',
+            letterSpacing: 0,
+            textAlign: 'center',
+            color: '',
+        },
+    },
 ]
 
 for (let i = 0 ; i < list.length; i++) {

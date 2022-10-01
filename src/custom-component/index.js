@@ -5,6 +5,7 @@ const components = [
     'VPicture',
     'VText',
     'VMultilineText',
+    'VLink',
 ]
 
 components.forEach(key => {

@@ -35,6 +35,7 @@ export default {
     },
     data() {
         return {
+
         }
     },
     computed: mapState([
@@ -69,6 +70,7 @@ export default {
             }
 
             const up = () => {
+
                 document.removeEventListener('mousemove', move)
                 document.removeEventListener('mouseup', up)
             }
