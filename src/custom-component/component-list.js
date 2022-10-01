@@ -79,6 +79,26 @@ const list = [
             backgroundColor: '',
         },
     },
+    {
+        component: 'VMultilineText',
+        label: '多行文本框',
+        propValue: {
+            value: '多行文本框',
+            label: 'textarea',
+        },
+        icon: 'mdi-card-text-outline',
+        style: {
+            width: 300,
+            height: 165,
+            borderWidth: 1,
+            borderColor: '',
+            borderRadius: '',
+            fontSize: 20,
+            fontWeight: 400,
+            lineHeight: '',
+            textAlign: '',
+        },
+    },
 ]
 
 for (let i = 0 ; i < list.length; i++) {
