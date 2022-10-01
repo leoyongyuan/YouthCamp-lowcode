@@ -118,6 +118,23 @@ const list = [
             color: '',
         },
     },
+    {
+        component: 'Video',
+        label: '视频',
+        icon: 'el-icon-video-camera',
+        propValue: {
+            url: require('@/assets/video1.mp4'),
+            flip: {
+                horizontal: false,
+                vertical: false,
+            },
+        },
+        style: {
+            width: 500,
+            height: 300,
+            borderRadius: '',
+        },
+    },
 ]
 
 for (let i = 0 ; i < list.length; i++) {

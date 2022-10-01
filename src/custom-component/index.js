@@ -6,6 +6,7 @@ const components = [
     'VText',
     'VMultilineText',
     'VLink',
+    'Video',
 ]
 
 components.forEach(key => {
