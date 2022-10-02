@@ -11,10 +11,15 @@
             </div>
         </div>
         <v-btn
-        style="margin: 10px;"
+        style="margin: 10px;margin-left: 30px;"
         depressed
         @click="addimage"
         >添加选项</v-btn>
+        <v-btn
+        style="margin: 10px;"
+        depressed
+        @click="delimage"
+        >删除选项</v-btn>
         <v-switch
             style="margin: 10px;"
             @click="changecycle"
@@ -56,6 +61,11 @@ export default {
 
         changecycle() {
             this.$store.state.curComponent.propValue.cycle = !this.$store.state.curComponent.propValue.cycle
+        },
+
+        delimage() {
+            if (this.curComponent.propValue.url.length <= 5) return;
+            this.curComponent.propValue.url.pop()
         },
     },
 }

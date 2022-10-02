@@ -181,7 +181,7 @@ const list = [
                 require('@/assets/image4.jpg'),
                 require('@/assets/image5.jpg')
             ],
-            cycle: true,
+            cycle: false,
         },
         style: {
             width: 800,

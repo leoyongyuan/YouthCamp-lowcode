@@ -8,7 +8,7 @@
             v-for="(item, i) in propValue.url"
             :key="i"
         >
-        <img :height="element.style.height" :width="element.style.width" :src="item"/>
+        <img draggable="false" :height="element.style.height" :width="element.style.width" :src="item"/>
       </v-carousel-item>
     </v-carousel>
 </template>
