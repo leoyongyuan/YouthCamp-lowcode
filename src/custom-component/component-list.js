@@ -189,6 +189,31 @@ const list = [
             borderRadius: '',
         },
     },
+    {
+        component: 'VChartScatter',
+        label: '散点图',
+        icon: 'mdi-chart-scatter-plot',
+        propValue: {
+            label: '散点图',
+            disabled: false,
+            chart: 'optionscatter',
+            xAxis: {
+                data: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            },
+            yAxis: {},
+            series: [
+                {
+                    type: 'scatter',
+                    data: [220, 182, 191, 234, 290, 330, 310],
+                },
+            ],
+        },
+        style: {
+            width: 500,
+            height: 300,
+            borderRadius: '',
+        },
+    },
 ]
 
 for (let i = 0 ; i < list.length; i++) {
