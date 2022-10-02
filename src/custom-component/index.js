@@ -8,6 +8,7 @@ const components = [
     'VLink',
     'Video',
     'VTable',
+    'VCarousel',
 ]
 
 components.forEach(key => {

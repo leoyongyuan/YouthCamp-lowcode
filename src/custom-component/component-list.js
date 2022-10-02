@@ -169,6 +169,26 @@ const list = [
             borderRadius: '',
         },
     },
+    {
+        component: 'VCarousel',
+        label: '轮播图',
+        icon: 'mdi-view-carousel-outline',
+        propValue: {
+            url: [
+                require('@/assets/image1.jpg'),
+                require('@/assets/image2.jpg'),
+                require('@/assets/image3.jpg'),
+                require('@/assets/image4.jpg'),
+                require('@/assets/image5.jpg')
+            ],
+            cycle: true,
+        },
+        style: {
+            width: 800,
+            height: 500,
+            borderRadius: '',
+        },
+    },
 ]
 
 for (let i = 0 ; i < list.length; i++) {
