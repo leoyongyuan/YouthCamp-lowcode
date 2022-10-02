@@ -1,10 +1,11 @@
 <template>
     <v-textarea
-        filled
-        :label="propValue.label"
-        :style="element.style"
-        :value="propValue.value"
-        color="teal"
+    filled
+    auto-grow
+    :label="propValue.label"
+    :style="element.style"
+    :value="propValue.value"
+    :height="element.style.height"
     ></v-textarea>
 </template>
 
@@ -26,8 +27,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.v-btn {
-    width: 100%;
-    height: 100%;
-}
+.v-textarea{
+    height: 100% !important
+ }
 </style>

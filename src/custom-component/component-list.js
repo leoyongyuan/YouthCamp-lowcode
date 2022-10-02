@@ -135,6 +135,40 @@ const list = [
             borderRadius: '',
         },
     },
+    {
+        component: 'VTable',
+        label: '表格',
+        icon: 'mdi-file-table-box',
+        propValue: {
+            headers: [
+                {
+                    text: '表头',
+                    value: 'name',
+                    align: 'start',
+                    filterable: false,
+                },
+                { text: '表头', value: 'value1' },
+                { text: '表头', value: 'value2' },
+            ],    
+            itemlist: [
+                {
+                    name: '行1',
+                    value1: 23,
+                    value2: 314
+                },
+                {
+                    name: '行2',
+                    value1: 2453,
+                    value2: 3114
+                },
+            ],
+        },
+        style: {
+            width: 500,
+            height: 300,
+            borderRadius: '',
+        },
+    },
 ]
 
 for (let i = 0 ; i < list.length; i++) {
