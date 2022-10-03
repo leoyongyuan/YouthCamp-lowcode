@@ -2,7 +2,7 @@ import * as echarts from 'echarts';
 import 'echarts-gl';
 
 var optioncolumnar = {
-    label: '经典示例',
+    label: '柱状图',
     disabled: false,
     chart: 'optioncolumnar',
     xAxis: {

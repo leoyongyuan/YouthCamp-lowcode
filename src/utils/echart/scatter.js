@@ -2,7 +2,7 @@ import * as echarts from 'echarts';
 import 'echarts-gl';
 
 var optionscatter = {
-    label: '经典示例',
+    label: '散点图',
     disabled: false,
     chart: 'optionscatter',
     xAxis: {

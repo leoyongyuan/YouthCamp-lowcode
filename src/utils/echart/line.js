@@ -2,7 +2,7 @@ import * as echarts from 'echarts';
 import 'echarts-gl';
 
 var optionline = {
-    label: '经典示例',
+    label: '折线图',
     disabled: false,
     chart: 'optionline',
     xAxis: {
