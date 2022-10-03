@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div ref="EChart" style="width: 500px; height:300px;">
+        <div ref="EChart">
         </div>
     </div>
 </template>
@@ -23,7 +23,6 @@ export default {
     },
     data() {
         return {
-            optionsum,
         }
     },
     watch: {
@@ -36,7 +35,10 @@ export default {
     },
     mounted() {
         // 基于准备好的dom，初始化echarts实例
-        this.echart = this.$echarts.init(this.$refs.EChart)
+        this.echart = this.$echarts.init(this.$refs.EChart,'roma', {
+            width: this.element.style.width,
+            height: this.element.style.height,
+        })
         this.render()
     },
     methods: {
@@ -44,7 +46,7 @@ export default {
             // 清除之前的数据参数
             this.echart.clear()
             let EChart = this.echart
-            let option = this.propValue
+            let option = this.propValue.option
             // 设置参数
             let config = {
                 ...option,
