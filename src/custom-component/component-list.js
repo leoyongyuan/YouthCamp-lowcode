@@ -219,6 +219,36 @@ const list = [
             borderRadius: '',
         },
     },
+    {
+        component: 'VChartLine',
+        label: '折线图',
+        icon: 'mdi-chart-line',
+        propValue: {
+            chart: 'optionline',
+            option: {
+            },
+        },
+        style: {
+            width: 800,
+            height: 500,
+            borderRadius: '',
+        },
+    },
+    {
+        component: 'VChartPie',
+        label: '饼状图',
+        icon: 'mdi-chart-pie',
+        propValue: {
+            chart: 'optionpie',
+            option: {
+            },
+        },
+        style: {
+            width: 800,
+            height: 500,
+            borderRadius: '',
+        },
+    },
 ]
 
 for (let i = 0 ; i < list.length; i++) {

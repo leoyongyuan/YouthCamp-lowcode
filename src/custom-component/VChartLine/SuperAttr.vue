@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { optionsum } from '@/utils/echart/scatter.js'  
+import { optionsum } from '@/utils/echart/line.js'  
 export default {
     data() {
         return {

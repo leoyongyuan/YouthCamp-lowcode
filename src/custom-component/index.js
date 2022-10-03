@@ -11,6 +11,9 @@ const components = [
     'VCarousel',
     'VChartScatter',
     'VChartColumnar',
+    'VChartLine',
+    'VChartPie',
+    
 ]
 
 components.forEach(key => {
