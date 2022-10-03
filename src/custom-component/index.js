@@ -10,6 +10,7 @@ const components = [
     'VTable',
     'VCarousel',
     'VChartScatter',
+    'VChartColumnar',
 ]
 
 components.forEach(key => {

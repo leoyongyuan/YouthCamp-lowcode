@@ -196,16 +196,21 @@ const list = [
         propValue: {
             chart: 'optionscatter',
             option: {
-                xAxis: {
-                    data: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-                },
-                yAxis: {},
-                series: [
-                    {
-                        type: 'scatter',
-                        data: [220, 182, 191, 234, 290, 330, 310],
-                    },
-                ],
+            },
+        },
+        style: {
+            width: 800,
+            height: 500,
+            borderRadius: '',
+        },
+    },
+    {
+        component: 'VChartColumnar',
+        label: '柱状图',
+        icon: 'mdi-chart-bar',
+        propValue: {
+            chart: 'optioncolumnar',
+            option: {
             },
         },
         style: {
