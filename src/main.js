@@ -13,8 +13,6 @@ import 'element-ui/lib/theme-chalk/index.css'
 import * as echarts from 'echarts'
 import 'echarts-gl';
 
-import $ from 'jquery'
-
 Vue.prototype.$echarts = echarts
 
 Vue.config.productionTip = false

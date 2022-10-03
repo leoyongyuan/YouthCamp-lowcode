@@ -194,8 +194,6 @@ const list = [
         label: '散点图',
         icon: 'mdi-chart-scatter-plot',
         propValue: {
-            label: '散点图',
-            disabled: false,
             chart: 'optionscatter',
             option: {
                 xAxis: {
