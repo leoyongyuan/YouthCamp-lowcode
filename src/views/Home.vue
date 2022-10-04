@@ -169,14 +169,14 @@ export default {
         }
     },
     components: {
-    Toolbar,
-    Editor,
-    ComponentList,
-    CanvasAttr,
-    AceEditorJSON,
-    AceEditorJS,
-    LinkComponent
-},
+        Toolbar,
+        Editor,
+        ComponentList,
+        CanvasAttr,
+        AceEditorJSON,
+        AceEditorJS,
+        LinkComponent
+    },
 
     computed: mapState([
         'componentData',

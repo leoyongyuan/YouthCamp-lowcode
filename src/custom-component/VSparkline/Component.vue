@@ -1,18 +1,20 @@
 <template>
-    <v-container fluid>
-      <v-sparkline
+    <div>
+        <v-sparkline
         :fill="propValue.fill"
         :gradient="propValue.selectedGradient"
         :line-width="propValue.width"
         :padding="propValue.padding"
         :smooth="propValue.radius || false"
         :value="propValue.value"
+        :style="element.style"
         auto-draw
-      ></v-sparkline>
-    </v-container>
+        ></v-sparkline>
+    </div>
 </template>
 <script>
 import OnEvent from '../common/OnEvent'
+
 export default {
     extends: OnEvent,
     props: {
