@@ -249,6 +249,32 @@ const list = [
             borderRadius: '',
         },
     },
+    {
+        component: 'VSparkline',
+        label: '迷你图表',
+        icon: 'mdi-chart-timeline-variant-shimmer',
+        propValue: {
+            fill: true,
+            selectedGradient: ['#00c6ff', '#F0F', '#FF0'],
+            gradients: [
+                ['#222'],
+                ['#42b3f4'],
+                ['red', 'orange', 'yellow'],
+                ['purple', 'violet'],
+                ['#00c6ff', '#F0F', '#FF0'],
+                ['#f72047', '#ffd200', '#1feaea'],
+            ],
+            padding: 8,
+            radius: 10,
+            value: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0],
+            width: 2,
+        },
+        style: {
+            width: 800,
+            height: 250,
+            borderRadius: '',
+        },
+    },
 ]
 
 for (let i = 0 ; i < list.length; i++) {

@@ -24,7 +24,7 @@ export default {
     data() {
         return {
             optionsum,
-            value: '',
+            value: '散点图',
         }
     },
     computed: {

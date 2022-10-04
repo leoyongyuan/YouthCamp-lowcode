@@ -13,7 +13,7 @@ const components = [
     'VChartColumnar',
     'VChartLine',
     'VChartPie',
-    
+    'VSparkline',
 ]
 
 components.forEach(key => {

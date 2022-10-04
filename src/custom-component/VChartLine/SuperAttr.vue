@@ -24,7 +24,7 @@ export default {
     data() {
         return {
             optionsum,
-            value: '',
+            value: '折线图',
         }
     },
     computed: {
