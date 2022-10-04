@@ -1,7 +1,6 @@
 <template>
     <div @change="getObjectURL">
         <v-file-input
-        :rules="rules"
         accept="image/png, image/jpeg, image/bmp"
         placeholder="Pick an avatar"
         prepend-icon="mdi-camera"

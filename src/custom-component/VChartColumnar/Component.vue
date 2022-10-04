@@ -27,9 +27,17 @@ export default {
             optionsum,
         }
     },
+    computed: {
+        curComponent() {
+            return this.$store.state.curComponent
+        },
+    },
     watch: {
         'propValue.chart': function () {
             this.changechart()
+        },
+        'curComponent.propValue.option': function () {
+            this.changeoption()
         },
     },
     mounted() {
@@ -45,7 +53,6 @@ export default {
             // 清除之前的数据参数
             this.echart.clear()
             let EChart = this.echart
-            this.propValue.option = this.optionsum[this.propValue.chart]
             let option = this.propValue.option
             // 设置参数
             let config = {
@@ -56,6 +63,12 @@ export default {
         },
 
         changechart() {
+            this.propValue.option = this.optionsum[this.propValue.chart]
+            this.render()
+        },
+
+        changeoption() {
+            this.propValue.option = this.curComponent.propValue.option
             this.render()
         },
     },

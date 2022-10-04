@@ -196,6 +196,19 @@ const list = [
         propValue: {
             chart: 'optionscatter',
             option: {
+                label: '散点图',
+                disabled: false,
+                chart: 'optionscatter',
+                xAxis: {
+                    data: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                },
+                yAxis: {},
+                series: [
+                    {
+                        type: 'scatter',
+                        data: [220, 182, 191, 234, 290, 330, 310],
+                    },
+                ],
             },
         },
         style: {
@@ -211,7 +224,43 @@ const list = [
         propValue: {
             chart: 'optioncolumnar',
             option: {
-            },
+                label: '柱状图',
+                disabled: false,
+                chart: 'optioncolumnar',
+                xAxis: {
+                    data: ['A', 'B', 'C', 'D', 'E'],
+                },
+                yAxis: {},
+                series: [
+                    {
+                        type: 'bar',
+                        data: [
+                            10,
+                            22,
+                            28,
+                            {
+                                value: 43,
+                                // 设置单个柱子的样式
+                                itemStyle: {
+                                    color: '#91cc75',
+                                    shadowColor: '#91cc75',
+                                    borderType: 'dashed',
+                                    opacity: 0.5,
+                                },
+                            },
+                            49,
+                        ],
+                        itemStyle: {
+                            barBorderRadius: 5,
+                            borderWidth: 1,
+                            borderType: 'solid',
+                            borderColor: '#73c0de',
+                            shadowColor: '#5470c6',
+                            shadowBlur: 3,
+                        },
+                    },
+                ],
+            }
         },
         style: {
             width: 800,
@@ -226,6 +275,26 @@ const list = [
         propValue: {
             chart: 'optionline',
             option: {
+                label: '折线图',
+                disabled: false,
+                chart: 'optionline',
+                xAxis: {
+                    data: ['A', 'B', 'C', 'D', 'E'],
+                },
+                yAxis: {},
+                series: [
+                    {
+                        data: [10, 22, 28, 23, 19],
+                        type: 'line',
+                        label: {
+                            show: true,
+                            position: 'bottom',
+                            textStyle: {
+                                fontSize: 20,
+                            },
+                        },
+                    },
+                ],
             },
         },
         style: {
@@ -241,7 +310,43 @@ const list = [
         propValue: {
             chart: 'optionpie',
             option: {
-            },
+                label: '圆环图',
+                disabled: false,
+                chart: 'optionpie',
+                title: {
+                    text: '圆环图',
+                    left: 'center',
+                    top: 'center',
+                },
+                series: [
+                    {
+                        type: 'pie',
+                        data: [
+                            {
+                                value: 335,
+                                name: 'A',
+                            },
+                            {
+                                value: 234,
+                                name: 'B',
+                            },
+                            {
+                                value: 1548,
+                                name: 'C',
+                            },
+                            {
+                                value: 111,
+                                name: 'D',
+                            },
+                            {
+                                value: 658,
+                                name: 'E',
+                            },
+                        ],
+                        radius: ['40%', '70%'],
+                    },
+                ],
+            }
         },
         style: {
             width: 800,
