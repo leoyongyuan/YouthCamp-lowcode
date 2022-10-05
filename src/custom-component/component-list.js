@@ -380,6 +380,46 @@ const list = [
             borderRadius: '',
         },
     },
+    {
+        component: 'VForm',
+        label: '表单',
+        propValue: {
+            valid: true,
+            name: '',
+            nameRules: [
+                v => !!v || 'Name is required',
+                v => (v && v.length <= 10) || 'Name must be less than 10 characters',
+            ],
+            email: '',
+            emailRules: [
+                v => !!v || 'E-mail is required',
+                v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+            ],
+            select: null,
+            items: [
+                'Item 1',
+                'Item 2',
+                'Item 3',
+                'Item 4',
+            ],
+            checkbox: false,
+        },
+        icon: 'mdi-form-select',
+        style: {
+            width: 500,
+            height: 320,
+            borderWidth: 1,
+            borderColor: '',
+            borderRadius: '',
+            fontSize: '',
+            fontWeight: 400,
+            lineHeight: '',
+            letterSpacing: 0,
+            textAlign: '',
+            color: '',
+            backgroundColor: '',
+        },
+    },
 ]
 
 for (let i = 0 ; i < list.length; i++) {
