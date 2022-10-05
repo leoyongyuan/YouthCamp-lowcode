@@ -420,6 +420,23 @@ const list = [
             backgroundColor: '',
         },
     },
+    {
+        component: 'VTab',
+        label: '选项卡',
+        propValue: null,
+        icon: 'mdi-table-row',
+        style: {
+            width: 380,
+            height: 48,
+            borderWidth: 1,
+            borderColor: '',
+            borderRadius: '',
+            fontSize: 20,
+            fontWeight: 400,
+            lineHeight: '',
+            textAlign: '',
+        },
+    },
 ]
 
 for (let i = 0 ; i < list.length; i++) {
