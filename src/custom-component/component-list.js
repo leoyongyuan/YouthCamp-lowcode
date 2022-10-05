@@ -437,6 +437,25 @@ const list = [
             textAlign: '',
         },
     },
+    {
+        component: 'VPagination',
+        label: '分页器',
+        propValue: {
+            page: 1,
+        },
+        icon: 'mdi-arrow-split-vertical',
+        style: {
+            width: 380,
+            height: 48,
+            borderWidth: 1,
+            borderColor: '',
+            borderRadius: '',
+            fontSize: 20,
+            fontWeight: 400,
+            lineHeight: '',
+            textAlign: '',
+        },
+    },
 ]
 
 for (let i = 0 ; i < list.length; i++) {

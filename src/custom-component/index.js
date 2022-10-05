@@ -16,6 +16,8 @@ const components = [
     'VSparkline',
     'VForm',
     'VTab',
+    'VPagination',
+    
 ]
 
 components.forEach(key => {
