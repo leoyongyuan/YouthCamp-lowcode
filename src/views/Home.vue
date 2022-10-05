@@ -42,7 +42,7 @@
                 </template>
                     <v-card>
                         <v-card-title>
-                        <span class="text-h5">如何使用-LowCode</span>
+                        <span class="text-h5">如何使用LowCode？</span>
                         </v-card-title>
                             <v-card-text>
                                 {{ text }}

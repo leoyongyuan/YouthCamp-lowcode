@@ -21,6 +21,7 @@
         @click="delimage"
         >删除选项</v-btn>
         <v-switch
+            v-model="cycle"
             style="margin: 10px;"
             @click="changecycle"
             label="自动循环"
@@ -31,14 +32,12 @@
 
 <script>
 export default {
-    data() {
-        return {
-            cycle: this.$store.state.curComponent.propValue.cycle
-        }
-    },
     computed: {
         curComponent() {
             return this.$store.state.curComponent
+        },
+        cycle() {
+            return this.$store.state.curComponent.propValue.cycle
         },
     },
     methods: {

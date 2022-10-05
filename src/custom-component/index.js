@@ -17,7 +17,9 @@ const components = [
     'VForm',
     'VTab',
     'VPagination',
-    
+    'VProgress',
+    'VDialogs',
+
 ]
 
 components.forEach(key => {

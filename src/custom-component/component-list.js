@@ -456,6 +456,50 @@ const list = [
             textAlign: '',
         },
     },
+    {
+        component: 'VProgress',
+        label: '进度条',
+        propValue: {
+            knowledge: 33,
+        },
+        icon: 'mdi-progress-helper',
+        style: {
+            width: 450,
+            height: 25,
+            borderWidth: 1,
+            borderColor: '',
+            borderRadius: '',
+            fontSize: 20,
+            fontWeight: 400,
+            lineHeight: '',
+            textAlign: '',
+        },
+    },
+    {
+        component: 'VDialogs',
+        label: '对话框',
+        propValue: {
+            dialog: false,
+            lable: '对话框',
+            title: 'Privacy Policy',
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        },
+        icon: 'mdi-message-text',
+        style: {
+            width: 100,
+            height: 34,
+            borderWidth: 1,
+            borderColor: '',
+            borderRadius: '',
+            fontSize: '',
+            fontWeight: 400,
+            lineHeight: '',
+            letterSpacing: 0,
+            textAlign: '',
+            color: '',
+            backgroundColor: '',
+        },
+    },
 ]
 
 for (let i = 0 ; i < list.length; i++) {
