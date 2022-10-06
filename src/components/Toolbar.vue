@@ -1,6 +1,9 @@
 <template>
     <div>
+        <img src="@/assets/logo1.jpg" alt="">
         <div class="toolbar">
+            <div style="display: inline-block;">
+            </div>
             <div class="canvas-config">
                 <span style="margin: 7px;"><v-icon> mdi-laptop</v-icon></span>
                 <input v-model="canvasStyleData.width">
@@ -134,11 +137,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-img{
-	width: auto;
-	height: auto;
-	max-width: 100%;
-	max-height: 100%;	
+img {
+    width: 230px;
+    height: 68px;
+    position: fixed;
 }
 ul li{
     list-style-type:none;
@@ -159,10 +161,10 @@ ul li{
 }
 .toolbar {
     padding: 15px 10px;
-    white-space: nowrap;
     overflow-x: auto;
     background: #fff;
     border-bottom: 1px solid #ddd;
+    height: 68px;
     .gap {
         margin-left: 10px;
         margin-right: 10px;
@@ -170,7 +172,8 @@ ul li{
     }
     .canvas-config {
         display: inline-block;
-        margin-left: 10px;
+        margin-left: 400px;
+        margin-right: 100px;
         font-size: 14px;
         color: #606266;
 
@@ -185,38 +188,6 @@ ul li{
 
         span {
             margin-left: 10px;
-        }
-    }
-
-    .insert {
-        display: inline-block;
-        line-height: 1;
-        white-space: nowrap;
-        cursor: pointer;
-        background: #fff;
-        border: 1px solid #dcdfe6;
-        color: #606266;
-        -webkit-appearance: none;
-        text-align: center;
-        box-sizing: border-box;
-        outline: 0;
-        margin: 0;
-        transition: .1s;
-        font-weight: 500;
-        padding: 9px 15px;
-        font-size: 12px;
-        border-radius: 3px;
-        margin-left: 10px;
-
-        &:active {
-            color: #3a8ee6;
-            border-color: #3a8ee6;
-            outline: 0;
-        }
-
-        &:hover {
-            background-color: #ecf5ff;
-            color: #3a8ee6;
         }
     }
 }
