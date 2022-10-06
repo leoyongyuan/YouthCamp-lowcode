@@ -4,3 +4,8 @@ module.exports = defineConfig({
     'vuetify'
   ]
 })
+module.exports = {
+    // ...
+    publicPath: './'
+    // ...
+}
