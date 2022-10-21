@@ -5,6 +5,13 @@
         @click="selectCurComponent"
         @mousedown="handleMouseDownOnShape"
     >
+        <div
+            v-for="item in (isActive() ? pointList : [])"
+            :key="item"
+            class="shape-point"
+            :style="getPointStyle(item)"
+        >
+        </div>
         <slot></slot>
     </div>
 </template>
@@ -35,7 +42,7 @@ export default {
     },
     data() {
         return {
-
+            pointList: ['lt', 't', 'rt', 'r', 'rb', 'b', 'lb', 'l'], // 八个方向
         }
     },
     computed: mapState([
@@ -84,6 +91,44 @@ export default {
             e.stopPropagation()
             e.preventDefault()
         },
+
+        isActive() {
+            return this.active
+        },
+
+        getPointStyle(point) {
+            const { width, height } = this.defaultStyle
+            const hasT = /t/.test(point)
+            const hasB = /b/.test(point)
+            const hasL = /l/.test(point)
+            const hasR = /r/.test(point)
+            
+            let leftnum = 0
+            let topnum = 0
+            if (point.length === 2) {
+                leftnum = hasL ? 0 : width
+                topnum = hasT ? 0 : height
+            } else {
+                if (hasT || hasB) {
+                    leftnum = width / 2
+                    topnum = hasT ? 0 : height
+                }
+
+                if (hasL || hasR) {
+                    leftnum = hasL ? 0 : width
+                    topnum = Math.floor(height / 2)
+                }
+            }
+            
+            const style = {
+                marginLeft: '-4px',
+                marginTop: '-4px',
+                left: `${leftnum}px`,
+                top: `${topnum}px`,
+            }
+
+            return style
+        },
     }
 }
 </script>
@@ -107,7 +152,7 @@ export default {
     border: 1px solid #59c7f9;
     width: 8px;
     height: 8px;
-    border-radius: 50%;
+    border-radius: 40%;
     z-index: 1;
 }
 
