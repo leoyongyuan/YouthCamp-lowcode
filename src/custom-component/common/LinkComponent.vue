@@ -2,7 +2,7 @@
     <el-form class="linkage-container">
         <div v-for="(item, index) in linkage.data" :key="index" class="linkage-component">
             <div class="div-guanbi" @click="deleteLinkageData(index)">
-                <span class="iconfont icon-guanbi"></span>
+                <v-icon>mdi-close-circle-outline</v-icon>
             </div>
             <el-select v-model="item.id" placeholder="请选择联动组件" class="testtest">
                 <el-option
