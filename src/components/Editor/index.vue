@@ -30,6 +30,7 @@
             />
         </Shape>
         <ContextMenu />
+        <MarkLine />
     </div>
 </template>
 
@@ -39,9 +40,10 @@ import { getCanvasStyle, getStyle, getShapeStyle } from '@/utils/style'
 import Shape from './Shape.vue'
 import ContextMenu from './ContextMenu.vue';
 import { changeStyleWithScale } from '@/utils/style'
+import MarkLine from './MarkLine.vue';
 
 export default {
-    components: { Shape, ContextMenu },
+    components: { Shape, ContextMenu, MarkLine },
     props: {
         isEdit: {
             type: Boolean,

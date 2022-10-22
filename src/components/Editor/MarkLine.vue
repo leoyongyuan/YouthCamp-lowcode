@@ -6,6 +6,7 @@
             :key="line"
             :ref="line"
             class="line"
+            :class="line.includes('x')? 'xline' : 'yline'"
         ></div>
     </div>
 </template>
@@ -13,7 +14,6 @@
 <script>
 import eventBus from '@/utils/eventBus'
 import { mapState } from 'vuex';
-
 export default {
     data() {
         return {
@@ -34,15 +34,15 @@ export default {
         'componentData',
     ]),
     mounted() {
-        eventBus.$on('move',(isDownward, isRightward) => {
+        eventBus.$on('move', (isDownward, isRightward) => {
             this.showLine(isDownward, isRightward)
         })
 
-        eventBus.$on('unmove',() => {
+        eventBus.$on('unmove', () => {
             this.hideLine()
         })
     },
-    methods() {
+    methods: {
         hideLine() {
             Object.keys(this.lineStatus).forEach(x => {
                 this.lineStatus[x] = false
@@ -55,7 +55,7 @@ export default {
             const curComponentStyle = this.getComponentStyle(this.curComponent.style)
             const curComponentHalfwidth = curComponentStyle.width / 2
             const curComponentHalfHeight = curComponentStyle.height / 2
-            
+        
             this.hideLine()
             components.forEach(component => {
                 if (component == this.curComponent) return
@@ -148,11 +148,15 @@ export default {
                     conditions[x].forEach(condition => {
                         if (!condition.isNearly) return
                         this.$store.commit('setShapeSingleStyle',{x, value: condition.dragShift})
+                        condition.lineNode.style[x] = `${condition.lineShift}px`
+                        needToShow.push(condition.line)
                     })
-                    condition.lineNode.style[x] = `${condition.lineShift}px`
-                    needToShow.push(condition.line)
                 })
             })
+            
+            if (needToShow.length) {
+                this.chooseLine(needToShow, isDownward, isRightward)
+            }
         },
 
         getComponentStyle(style) {
@@ -166,9 +170,70 @@ export default {
         isNearly(dragValue, targetValue) {
             return Math.abs(dragValue - targetValue) <= this.diff
         },
+
+        chooseLine(needToShow, isDownward, isRightward) {
+            // 如果鼠标向右移动 则按从右到左的顺序显示竖线 否则按相反顺序显示
+            // 如果鼠标向下移动 则按从下到上的顺序显示横线 否则按相反顺序显示
+            if (isRightward) {
+                if (needToShow.includes('yr')) {
+                    this.lineStatus.yr = true
+                } else if (needToShow.includes('yc')) {
+                    this.lineStatus.yc = true
+                } else if (needToShow.includes('yl')) {
+                    this.lineStatus.yl = true
+                }
+            } else {
+                // eslint-disable-next-line no-lonely-if
+                if (needToShow.includes('yl')) {
+                    this.lineStatus.yl = true
+                } else if (needToShow.includes('yc')) {
+                    this.lineStatus.yc = true
+                } else if (needToShow.includes('yr')) {
+                    this.lineStatus.yr = true
+                }
+            }
+
+            if (isDownward) {
+                if (needToShow.includes('xb')) {
+                    this.lineStatus.xb = true
+                } else if (needToShow.includes('xc')) {
+                    this.lineStatus.xc = true
+                } else if (needToShow.includes('xt')) {
+                    this.lineStatus.xt = true
+                }
+            } else {
+                // eslint-disable-next-line no-lonely-if
+                if (needToShow.includes('xt')) {
+                    this.lineStatus.xt = true
+                } else if (needToShow.includes('xc')) {
+                    this.lineStatus.xc = true
+                } else if (needToShow.includes('xb')) {
+                    this.lineStatus.xb = true
+                }
+            }
+        },
     },  
 }
 </script>
 
 <style lang="scss" scoped>
+.mark-line {
+    height: 100%;
+}
+
+.line {
+    background: #59c7f9;
+    position: absolute;
+    z-index: 1000;
+}
+
+.xline {
+    width: 100%;
+    height: 1px;
+}
+
+.yline {
+    width: 1px;
+    height: 100%;
+}
 </style>

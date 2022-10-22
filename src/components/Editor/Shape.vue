@@ -53,7 +53,6 @@ export default {
         handleMouseDownOnShape(e) {
             this.$store.commit('setInEditorStatus', true)
             this.$store.commit('setClickComponentStatus', true)
-
             e.stopPropagation()
             this.$store.commit('setCurComponent', { component: this.element, index: this.index })
 
