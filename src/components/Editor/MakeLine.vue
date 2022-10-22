@@ -1,6 +1,12 @@
 <template>
     <div class="mark-line">
-
+        <div
+            v-for="line in lines"
+            v-show="lineStatus[line] || false"
+            :key="line"
+            :ref="line"
+            class="line"
+        ></div>
     </div>
 </template>
 

@@ -5,8 +5,6 @@ import snapshot from './snapshot'
 import contextmenu from './contextmenu'
 import copy from './copy'
 import layer from './layer'
-import { VLabel } from 'vuetify/lib'
-import { deepCopy } from '@/utils/utils'
 
 Vue.use(Vuex)
 
