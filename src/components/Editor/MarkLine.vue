@@ -152,11 +152,11 @@ export default {
                         needToShow.push(condition.line)
                     })
                 })
+
+                if (needToShow.length) {
+                    this.chooseLine(needToShow, isDownward, isRightward)
+                }
             })
-            
-            if (needToShow.length) {
-                this.chooseLine(needToShow, isDownward, isRightward)
-            }
         },
 
         getComponentStyle(style) {

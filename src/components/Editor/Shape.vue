@@ -16,6 +16,7 @@
     </div>
 </template>
 <script>
+import eventBus from '@/utils/eventBus'
 import { mapState } from 'vuex'
 
 export default {
@@ -73,10 +74,15 @@ export default {
 
                 // 修改当前组件样式
                 this.$store.commit('setShapeStyle', pos)
+
+                this.$nextTick(() => {
+                    // 让MarkLine 接收
+                    eventBus.$emit('move', curY - startY > 0, curX - startX > 0)
+                })
             }
 
             const up = () => {
-
+                eventBus.$emit('unmove')
                 document.removeEventListener('mousemove', move)
                 document.removeEventListener('mouseup', up)
             }
