@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import eventBus from '@/utils/eventBus'
 import { mapState } from 'vuex';
 
 export default {
@@ -32,6 +33,135 @@ export default {
         'curComponent',
         'componentData',
     ]),
+    mounted() {
+        eventBus.$on('move',(isDownward, isRightward) => {
+            this.showLine(isDownward, isRightward)
+        })
+
+        eventBus.$on('unmove',() => {
+            this.hideLine()
+        })
+    },
+    methods() {
+        hideLine() {
+            Object.keys(this.lineStatus).forEach(x => {
+                this.lineStatus[x] = false
+            })
+        },
+
+        showLine(isDownward, isRightward) {
+            const lines = this.$refs
+            const components = this.componentData
+            const curComponentStyle = this.getComponentStyle(this.curComponent.style)
+            const curComponentHalfwidth = curComponentStyle.width / 2
+            const curComponentHalfHeight = curComponentStyle.height / 2
+            
+            this.hideLine()
+            components.forEach(component => {
+                if (component == this.curComponent) return
+                const componentStyle = this.getComponentStyle(component.style)
+                const { top, left, bottom, right } = componentStyle
+                const componentHalfwidth = componentStyle.width / 2
+                const componentHalfHeight = componentStyle.height / 2
+
+                const conditions = {
+                    top: [
+                        {
+                            isNearly: this.isNearly(curComponentStyle.top, top),
+                            lineNode: lines.xt[0], // xt
+                            line: 'xt',
+                            dragShift: top,
+                            lineShift: top,
+                        },
+                        {
+                            isNearly: this.isNearly(curComponentStyle.bottom, top),
+                            lineNode: lines.xt[0], // xt
+                            line: 'xt',
+                            dragShift: top - curComponentStyle.height,
+                            lineShift: top,
+                        },
+                        {
+                            // 组件与拖拽节点的中间是否对齐
+                            isNearly: this.isNearly(curComponentStyle.top + curComponentHalfHeight, top + componentHalfHeight),
+                            lineNode: lines.xc[0], // xc
+                            line: 'xc',
+                            dragShift: top + componentHalfHeight - curComponentHalfHeight,
+                            lineShift: top + componentHalfHeight,
+                        },
+                        {
+                            isNearly: this.isNearly(curComponentStyle.top, bottom),
+                            lineNode: lines.xb[0], // xb
+                            line: 'xb',
+                            dragShift: bottom,
+                            lineShift: bottom,
+                        },
+                        {
+                            isNearly: this.isNearly(curComponentStyle.bottom, bottom),
+                            lineNode: lines.xb[0], // xb
+                            line: 'xb',
+                            dragShift: bottom - curComponentStyle.height,
+                            lineShift: bottom,
+                        },
+                    ],
+                    left: [
+                        {
+                            isNearly: this.isNearly(curComponentStyle.left, left),
+                            lineNode: lines.yl[0], // yl
+                            line: 'yl',
+                            dragShift: left,
+                            lineShift: left,
+                        },
+                        {
+                            isNearly: this.isNearly(curComponentStyle.right, left),
+                            lineNode: lines.yl[0], // yl
+                            line: 'yl',
+                            dragShift: left - curComponentStyle.width,
+                            lineShift: left,
+                        },
+                        {
+                            // 组件与拖拽节点的中间是否对齐
+                            isNearly: this.isNearly(curComponentStyle.left + curComponentHalfwidth, left + componentHalfwidth),
+                            lineNode: lines.yc[0], // yc
+                            line: 'yc',
+                            dragShift: left + componentHalfwidth - curComponentHalfwidth,
+                            lineShift: left + componentHalfwidth,
+                        },
+                        {
+                            isNearly: this.isNearly(curComponentStyle.left, right),
+                            lineNode: lines.yr[0], // yr
+                            line: 'yr',
+                            dragShift: right,
+                            lineShift: right,
+                        },
+                        {
+                            isNearly: this.isNearly(curComponentStyle.right, right),
+                            lineNode: lines.yr[0], // yr
+                            line: 'yr',
+                            dragShift: right - curComponentStyle.width,
+                            lineShift: right,
+                        },
+                    ],
+                }
+
+                const needToShow = []
+                Object.keys(conditions).forEach(x => {
+                    conditions[x].forEach(condition => {
+                        if (!condition.isNearly) return
+                        this.$store.commit('setShapeSingleStyle',{x, value: condition.dragShift})
+                    })
+                    condition.lineNode.style[x] = `${condition.lineShift}px`
+                    needToShow.push(condition.line)
+                })
+            })
+        }
+        getComponentStyle(style) {
+            style = {...style}
+            style.bottom = style.top + style.height
+            style.right = style.left + style.width
+            
+            return style
+        }
+    },  
 }
 </script>
 

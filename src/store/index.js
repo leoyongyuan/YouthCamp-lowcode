@@ -82,6 +82,10 @@ export default new Vuex.Store({
         if (rotate) curComponent.style.rotate = Math.round(rotate)
     },
 
+    setShapeSingleStyle({ curComponent }, { key, value }) {
+        curComponent.style[key] = value
+    },
+
     setClickComponentStatus(state, status) {
         state.isClickComponent = status
     },
