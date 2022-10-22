@@ -144,11 +144,16 @@ export default {
                 }
 
                 const needToShow = []
-                Object.keys(conditions).forEach(x => {
-                    conditions[x].forEach(condition => {
+                Object.keys(conditions).forEach(key => {
+                    // 遍历符合的条件并处理
+                    conditions[key].forEach((condition) => {
                         if (!condition.isNearly) return
-                        this.$store.commit('setShapeSingleStyle',{x, value: condition.dragShift})
-                        condition.lineNode.style[x] = `${condition.lineShift}px`
+                        // 修改当前组件位移
+                        this.$store.commit('setShapeSingleStyle', {
+                            key,
+                            value: condition.dragShift,
+                        })
+                        condition.lineNode.style[key] = `${condition.lineShift}px`
                         needToShow.push(condition.line)
                     })
                 })
