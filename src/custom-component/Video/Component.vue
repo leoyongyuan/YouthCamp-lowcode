@@ -1,7 +1,6 @@
 <template>
     <div>
         <canvas ref="canvas"></canvas>
-        <!-- 控制条 -->
         <div class="ctrl-box">
             <div class="btn-box">
                 <el-button
