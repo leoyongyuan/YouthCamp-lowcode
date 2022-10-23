@@ -56,10 +56,9 @@
 - Delete : 撤销
 
 ### 部分功能演示
-
-![image](https://github.com/leoyongyuan/YouthCamp-lowcode/src/assets/show1.gif)
-![image](https://github.com/leoyongyuan/YouthCamp-lowcode/src/assets/show2.gif)
-![image](https://github.com/leoyongyuan/YouthCamp-lowcode/src/assets/show3.gif)
+![image](https://github.com/leoyongyuan/YouthCamp-lowcode/blob/master/src/assets/show1.gif)
+![image](https://github.com/leoyongyuan/YouthCamp-lowcode/blob/master/src/assets/show2.gif)
+![image](https://github.com/leoyongyuan/YouthCamp-lowcode/blob/master/src/assets/show3.gif)
 
 ### ▶ 如何运行
 
