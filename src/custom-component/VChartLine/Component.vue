@@ -39,6 +39,12 @@ export default {
         'curComponent.propValue.option': function () {
             this.changeoption()
         },
+        'curComponent.style.width': function() {
+            this.render()
+        },
+        'curComponent.style.height': function() {
+            this.render()
+        },
     },
     mounted() {
         // 基于准备好的dom，初始化echarts实例
@@ -58,6 +64,10 @@ export default {
             let config = {
                 ...option,
             }
+            this.echart.resize({
+                width: this.element.style.width, 
+                height: this.element.style.height
+            })
             // 配置参数
             EChart.setOption(config)
         },
