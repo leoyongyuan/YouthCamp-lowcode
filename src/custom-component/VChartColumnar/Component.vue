@@ -36,6 +36,12 @@ export default {
         'propValue.chart': function () {
             this.changechart()
         },
+        'curComponent.style.width': function() {
+            this.render()
+        },
+        'curComponent.style.height': function() {
+            this.render()
+        },
         'curComponent.propValue.option': function () {
             this.changeoption()
         },
@@ -58,6 +64,11 @@ export default {
             let config = {
                 ...option,
             }
+            // 更新大小
+            this.echart.resize({
+                width: this.element.style.width, 
+                height: this.element.style.height
+            })
             // 配置参数
             EChart.setOption(config)
         },
