@@ -36,14 +36,14 @@ export default {
         'propValue.chart': function () {
             this.changechart()
         },
+        'curComponent.propValue.option': function () {
+            this.changeoption()
+        },
         'curComponent.style.width': function() {
             this.render()
         },
         'curComponent.style.height': function() {
             this.render()
-        },
-        'curComponent.propValue.option': function () {
-            this.changeoption()
         },
     },
     mounted() {
@@ -79,6 +79,7 @@ export default {
         },
 
         changeoption() {
+            if (this.curComponent.id !== this.element.id) return;
             this.propValue.option = this.curComponent.propValue.option
             this.render()
         },

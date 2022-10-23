@@ -78,6 +78,7 @@ export default {
         },
 
         changeoption() {
+            if (this.curComponent.id !== this.element.id) return;
             this.propValue.option = this.curComponent.propValue.option
             this.render()
         },
