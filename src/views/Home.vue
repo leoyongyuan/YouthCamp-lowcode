@@ -113,7 +113,7 @@
                 <ComponentList />
             </div>
             <div class="panle" style="width:600px"  v-else-if="select === 1">
-                <AceEditorJSON />
+                <AceEditorJSON @closeEditor="closeEditor"/>
             </div>
             <div class="panle" style="width:600px;background-color:#333333;" v-else-if="select === 2">
                 <AceEditorJS />
@@ -250,6 +250,10 @@ export default {
             if (e.button != 2) {
                 this.$store.commit('hideContextMenu')
             }
+        },
+
+        closeEditor() {
+            this.showPanle(-1)
         },
     }
 }

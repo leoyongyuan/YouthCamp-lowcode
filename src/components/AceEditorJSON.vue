@@ -12,8 +12,8 @@
         elevation="2"
         raised
         small
-        @click="openReplaceBox"
-        ><v-icon>mdi-wrench-cog-outline</v-icon></v-btn>
+        @click="closeEditor"
+        ><v-icon>mdi-window-close</v-icon></v-btn>
         <el-col :span="18" class="gap">
             <el-dropdown trigger="click">
             <span class="el-dropdown-link">
@@ -136,13 +136,15 @@ export default {
                 this.$store.commit('acesetcurComponent', JSON.parse(str))
         },
         
-        openSearchBox: function () {
+        openSearchBox () {
             this.editor.execCommand('find');
         },
-        openReplaceBox: function () {
-            this.editor.execCommand('replace');
+
+        closeEditor() {
+            this.$emit('closeEditor')
         },
-        updateEditorTheme: function (theme) {
+
+        updateEditorTheme (theme) {
             this.editor.setTheme(theme);
         },
     }
