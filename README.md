@@ -27,7 +27,7 @@
 - [x] 响应式预览
 - [ ] 数据源管理入口
 - [ ] 提供可设置的预置函数
-- [ ] 支持H5移动端
+- [ ] 支持 H5 移动端
 
 #### lowcode 平台快捷键操作指令
 
@@ -54,6 +54,7 @@
 - **Delete : 撤销**
 
 ### 部分功能演示
+
 ![image](https://github.com/leoyongyuan/YouthCamp-lowcode/blob/master/src/assets/show1.gif)
 ![image](https://github.com/leoyongyuan/YouthCamp-lowcode/blob/master/src/assets/show3.gif)
 
