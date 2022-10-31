@@ -116,7 +116,7 @@
                 <AceEditorJSON @closeEditor="closeEditor"/>
             </div>
             <div class="panle" style="width:600px;background-color:#333333;" v-else-if="select === 2">
-                <AceEditorJS />
+                <AceEditorJS @closeEditor="closeEditor"/>
             </div>
             <div class="panle" v-else-if="select === 3">
                 4
