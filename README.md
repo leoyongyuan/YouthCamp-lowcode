@@ -15,6 +15,7 @@
 - 前端框架：[Vue 2.x](https://cn.vuejs.org/)
 - UI 框架: [Element Plus](https://element-plus.org/zh-CN/#/zh-CN) [Vuetify](https://vuetifyjs.com/zh-Hans/)
 - CSS 预编译：[Sass](https://sass.bootcss.com/documentation)
+- 富文本编辑器：[Ace](https://ace.c9.io/)
 
 ### 实现功能
 
