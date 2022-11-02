@@ -29,7 +29,7 @@ export default {
         if (this.linkage?.data?.length) {
             eventBus.$off('v-click', this.onClick)
             eventBus.$off('v-hover', this.onHover)
-            eventBus.$on('v-dblclick', this.onDblclick)
+            eventBus.$off('v-dblclick', this.onDblclick)
         }
     },
     methods: {
