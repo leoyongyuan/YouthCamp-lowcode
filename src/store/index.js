@@ -43,6 +43,17 @@ export default new Vuex.Store({
     ...copy.mutations,
     ...layer.mutations,
 
+    echartSetcurComponent(state, value) {
+        for (let i = 0; i < state.componentData.length;i ++ ) {
+            if (state.componentData[i].id === value.id) {
+                state.componentData.splice(i,1)
+            }
+        }
+        console.log(111);
+        state.componentData.push(value)
+        state.curComponent = value
+    },
+
     acesetCanvasData(state, value) {
         state.canvasStyleData = value
     },

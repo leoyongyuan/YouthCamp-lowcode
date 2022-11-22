@@ -64,6 +64,7 @@ import 'ace-builds/src-min-noconflict/mode-xml'
 import 'ace-builds/src-min-noconflict/mode-json5'
 //代码完成
 import 'ace-builds/src-min-noconflict/ext-language_tools'
+import { mapState } from 'vuex'
 
 export default {
     name: 'AceDemoJS',
@@ -74,6 +75,10 @@ export default {
             event: null,
         }
     },
+    computed: mapState([
+        'componentData',
+        'curComponent',
+    ]),
 
     mounted() {
         ace.config.set("basePath", "https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/");
@@ -90,7 +95,19 @@ export default {
             enableLiveAutocompletion: true, //boolean 或 completer数组,
             enableSnippets: true // boolean
         });
-        this.editor.setValue(`(function () {\n    // start Code...   \n})`)
+        
+        let str = JSON.stringify(this.curComponent.event,function(key,val){
+            if (typeof val === 'function') {
+                return `${val}`;
+            }
+            return val;
+        },4)
+        console.log(str)
+        // for (let key in this.componentData) {
+        //     str += JSON.stringify(this.componentData[key].event, null, 4)
+        //     console.log(this.componentData[key].event)
+        // }
+        this.editor.setValue("(function () {\n"   + str +    "\n})")
     },
     methods: {
         getCode() {

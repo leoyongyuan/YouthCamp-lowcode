@@ -1,7 +1,6 @@
 <template>
     <div>
-        <div ref="EChart">
-        </div>
+        <div ref="EChart"></div>
     </div>
 </template>
 
@@ -33,21 +32,15 @@ export default {
         },
     },
     watch: {
-        'propValue.chart': function () {
-            this.changechart()
-        },
-        'curComponent.propValue.option': function () {
-            this.changeoption()
-        },
-        'curComponent.style.width': function() {
-            this.render()
-        },
-        'curComponent.style.height': function() {
-            this.render()
-        },
+        curComponent: {
+            deep: true,
+            handler() {
+                this.render();
+            }
+        }
     },
     mounted() {
-        // 基于准备好的dom，初始化echarts实例
+        // 初始化echarts实例
         this.echart = this.$echarts.init(this.$refs.EChart, null, {
             width: this.element.style.width,
             height: this.element.style.height,
@@ -57,7 +50,7 @@ export default {
     methods: {
         render() {
             // 清除之前的数据参数
-            this.echart.clear()
+            // this.echart.clear()
             let EChart = this.echart
             let option = this.propValue.option
             // 设置参数
@@ -79,8 +72,8 @@ export default {
         },
 
         changeoption() {
-            if (this.curComponent.id !== this.element.id) return;
-            this.propValue.option = this.curComponent.propValue.option
+            // if (this.curComponent.id !== this.element.id) return;
+            // this.propValue.option = this.curComponent.propValue.option
             this.render()
         },
     },

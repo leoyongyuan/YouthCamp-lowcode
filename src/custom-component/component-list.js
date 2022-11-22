@@ -42,6 +42,12 @@ const list = [
             color: '',
             backgroundColor: '',
         },
+        event:{
+            a:function() {
+                console.log(1111)
+            },
+            b:1,
+        },
     },
     {
         component: 'VPicture',
@@ -227,39 +233,34 @@ const list = [
                 label: '柱状图',
                 disabled: false,
                 chart: 'optioncolumnar',
+                title: {
+                    text:'柱状图',
+                    show: true,
+                },
+                legend: {
+                    show: true,
+                },
+                tooltip: {
+                    show:true,
+                    trigger: 'item',
+                },
                 xAxis: {
                     data: ['A', 'B', 'C', 'D', 'E'],
                 },
                 yAxis: {},
-                series: [
-                    {
-                        type: 'bar',
-                        data: [
-                            10,
-                            22,
-                            28,
-                            {
-                                value: 43,
-                                // 设置单个柱子的样式
-                                itemStyle: {
-                                    color: '#91cc75',
-                                    shadowColor: '#91cc75',
-                                    borderType: 'dashed',
-                                    opacity: 0.5,
-                                },
-                            },
-                            49,
-                        ],
-                        itemStyle: {
-                            barBorderRadius: 5,
-                            borderWidth: 1,
-                            borderType: 'solid',
-                            borderColor: '#73c0de',
-                            shadowColor: '#5470c6',
-                            shadowBlur: 3,
-                        },
+                series: {
+                    type: 'bar',
+                    name: '销量',
+                    data: [23, 61, 35, 77,35],
+                    itemStyle: {
+                        barBorderRadius: 5,
+                        borderWidth: 1,
+                        borderType: 'solid',
+                        borderColor: '#73c0de',
+                        shadowColor: '#5470c6',
+                        shadowBlur: 3,
                     },
-                ],
+                }
             }
         },
         style: {

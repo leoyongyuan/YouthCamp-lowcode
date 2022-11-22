@@ -14,6 +14,28 @@
                     </el-option>
                 </el-select>
             </el-form-item>
+            <el-form-item label="标题">
+                <el-switch
+                    v-model="option.title.show"
+                    active-text="显示标题">
+                </el-switch>
+                <el-input 
+                    v-model="option.title.text"
+                    placeholder="请输入内容">
+                </el-input>
+            </el-form-item>
+            <el-form-item label="工具提示">
+                <el-switch
+                    v-model="option.tooltip.show"
+                    active-text="显示提示">
+                </el-switch>
+            </el-form-item>
+            <el-form-item label="图例">
+                <el-switch
+                    v-model="option.legend.show"
+                    active-text="显示图例">
+                </el-switch>
+            </el-form-item>
         </el-form>
     </div>
 </template>
@@ -25,11 +47,15 @@ export default {
         return {
             optionsum,
             value: '柱状图',
+            valuetitle: true,
         }
     },
     computed: {
         curComponent() {
             return this.$store.state.curComponent
+        },
+        option() {
+            return this.$store.state.curComponent.propValue.option
         },
     },
     methods: {
