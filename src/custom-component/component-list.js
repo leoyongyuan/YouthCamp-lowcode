@@ -201,6 +201,7 @@ const list = [
         icon: 'mdi-chart-scatter-plot',
         propValue: {
             chart: 'optionscatter',
+            radio: 'GET',
             option: {
                 label: '散点图',
                 disabled: false,
@@ -241,10 +242,11 @@ const list = [
                     show: true,
                 },
                 tooltip: {
-                    show:true,
+                    show: true,
                     trigger: 'item',
                 },
                 xAxis: {
+                    show: true,
                     data: ['A', 'B', 'C', 'D', 'E'],
                 },
                 yAxis: {},

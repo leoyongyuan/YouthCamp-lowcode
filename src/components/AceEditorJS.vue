@@ -95,19 +95,8 @@ export default {
             enableLiveAutocompletion: true, //boolean 或 completer数组,
             enableSnippets: true // boolean
         });
-        
-        let str = JSON.stringify(this.curComponent.event,function(key,val){
-            if (typeof val === 'function') {
-                return `${val}`;
-            }
-            return val;
-        },4)
-        console.log(str)
-        // for (let key in this.componentData) {
-        //     str += JSON.stringify(this.componentData[key].event, null, 4)
-        //     console.log(this.componentData[key].event)
-        // }
-        this.editor.setValue("(function () {\n"   + str +    "\n})")
+    
+        this.editor.setValue(`(function () {\n    \n})()`)
     },
     methods: {
         getCode() {

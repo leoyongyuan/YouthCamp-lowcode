@@ -32,6 +32,9 @@ export default {
         },
     },
     watch: {
+        'propValue.chart': function() {
+            this.changechart()
+        },
         curComponent: {
             deep: true,
             handler() {
@@ -49,8 +52,6 @@ export default {
     },
     methods: {
         render() {
-            // 清除之前的数据参数
-            // this.echart.clear()
             let EChart = this.echart
             let option = this.propValue.option
             // 设置参数
@@ -67,13 +68,9 @@ export default {
         },
 
         changechart() {
+            // 清除之前的数据参数
+            this.echart.clear()
             this.propValue.option = this.optionsum[this.propValue.chart]
-            this.render()
-        },
-
-        changeoption() {
-            // if (this.curComponent.id !== this.element.id) return;
-            // this.propValue.option = this.curComponent.propValue.option
             this.render()
         },
     },

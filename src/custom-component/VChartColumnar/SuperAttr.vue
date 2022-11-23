@@ -14,41 +14,141 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="标题">
-                <el-switch
-                    v-model="option.title.show"
-                    active-text="显示标题">
-                </el-switch>
-                <el-input 
-                    v-model="option.title.text"
-                    placeholder="请输入内容">
-                </el-input>
-            </el-form-item>
-            <el-form-item label="工具提示">
-                <el-switch
-                    v-model="option.tooltip.show"
-                    active-text="显示提示">
-                </el-switch>
-            </el-form-item>
-            <el-form-item label="图例">
-                <el-switch
-                    v-model="option.legend.show"
-                    active-text="显示图例">
-                </el-switch>
-            </el-form-item>
         </el-form>
+        <el-collapse v-model="activeName" accordion>
+            <el-collapse-item title="属性列表" name="linkage">
+                <el-form>
+                    <el-form-item label="标题">
+                        <el-switch
+                            v-model="option.title.show"
+                            active-text="显示标题">
+                        </el-switch>
+                        <el-input 
+                            v-model="option.title.text"
+                            placeholder="请输入内容">
+                        </el-input>
+                    </el-form-item>
+                    <el-form-item label="工具提示">
+                        <el-switch
+                            v-model="option.tooltip.show"
+                            active-text="显示提示">
+                        </el-switch>
+                    </el-form-item>
+                    <el-form-item label="图例">
+                        <el-switch
+                            v-model="option.legend.show"
+                            active-text="显示图例">
+                        </el-switch>
+                    </el-form-item>
+                    <el-form-item label="横坐标">
+                        <el-switch
+                            v-model="option.xAxis.show"
+                            active-text="显示横坐标">
+                        </el-switch>
+                    </el-form-item>
+                </el-form>
+            </el-collapse-item>
+            <el-collapse-item title="数据来源" name="linkage">
+                <el-form>
+                    <el-form-item label="静态数据源">
+                        <el-button @click="openStaticWinbox">修改数据</el-button>
+                    </el-form-item>
+                    <el-form-item label="接口数据源">
+                        <el-radio v-model="curComponent.propValue.radio" label="GET">GET</el-radio>
+                        <el-radio v-model="curComponent.propValue.radio" label="POST">POST</el-radio>
+                        <el-button @click="openIOWinbox">调式接口</el-button>
+                    </el-form-item>
+                </el-form>
+            </el-collapse-item>
+        </el-collapse>
+        <div style="display: none">
+            <div id="staticData">
+                <div class="modal-form-item dark-theme">
+                    <div ref="ace"></div>
+                </div>
+                <v-btn
+                    class="gap-2"
+                    elevation="2"
+                    raised
+                    small
+                    color="#409EFF"
+                    @click="updatedata"
+                    >
+                    <v-icon>mdi-update</v-icon>更新数据
+                </v-btn>
+            </div>
+        </div>
+        <div style="display: none">
+            <div id="IOData">
+                <el-form>
+                    <p style="margin:5px;color:bisque">请求地址：</p>
+                    <el-input>
+                        <template slot="prepend">HTTPS://</template>
+                    </el-input>
+                </el-form>
+                <p style="margin:5px;color:bisque">请求体参数JSON：</p>
+                <div class="modal-form-item dark-theme">
+                    <div ref="ace2"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-import { optionsum } from '@/utils/echart/columnar.js'  
+import { optionsum } from '@/utils/echart/columnar.js'
+import ace from 'ace-builds'
+import 'ace-builds/src-min-noconflict/theme-cobalt'
+import 'ace-builds/src-min-noconflict/theme-github'
+import 'ace-builds/src-min-noconflict/mode-json5'
+import WinBox from 'winbox/src/js/winbox'
 export default {
     data() {
         return {
             optionsum,
             value: '柱状图',
-            valuetitle: true,
+            activeName: '',
         }
+    },
+    mounted() {
+        ace.config.set("basePath", "https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/");
+        this.editor = ace.edit(this.$refs.ace, {
+            maxLines: 24, // 最大行数，超过会自动出现滚动条
+            minLines: 24, // 最小行数，还未到最大行数时，编辑器会自动伸缩大小
+            fontSize: 14, // 编辑器内字体大小
+            theme: 'ace/theme/cobalt', // 默认设置的主题
+            mode: 'ace/mode/json5', // 默认设置的语言模式
+            tabSize: 4,// 制表符设置为 4 个空格大小
+            readOnly: false, //只读
+            enableBasicAutocompletion: true, //boolea 或 completer数组,
+            enableLiveAutocompletion: true, //boolean 或 completer数组,
+            enableSnippets: true // boolean
+        });
+
+        this.editor2 = ace.edit(this.$refs.ace2, {
+            maxLines: 24, // 最大行数，超过会自动出现滚动条
+            minLines: 24, // 最小行数，还未到最大行数时，编辑器会自动伸缩大小
+            fontSize: 14, // 编辑器内字体大小
+            theme: 'ace/theme/github', // 默认设置的主题
+            mode: 'ace/mode/json5', // 默认设置的语言模式
+            tabSize: 4,// 制表符设置为 4 个空格大小
+            readOnly: false, //只读
+            enableBasicAutocompletion: true, //boolea 或 completer数组,
+            enableLiveAutocompletion: true, //boolean 或 completer数组,
+            enableSnippets: true // boolean
+        });
+        this.editor.setValue(JSON.stringify(this.curComponent.propValue.option.series.data))
+        this.editor2.setValue("{\n  \n}")
+    },
+    watch: {
+        'propValue.option.series': function() {
+            let arr = [];
+            for (let i = 0; i < this.curComponent.propValue.option.series.length; i ++ ) {
+                let obj = this.curComponent.propValue.option.series[i];
+                arr.push(obj.data)
+            }
+            this.editor.setValue(JSON.stringify(arr))
+        },
     },
     computed: {
         curComponent() {
@@ -62,14 +162,81 @@ export default {
         selectoption(chart) {
             this.curComponent.propValue.chart = chart
         },
+        openStaticWinbox() {
+            new WinBox('Static Data', {
+                background: "#1E1E1E",
+                x: 'center',
+                y: 'center',
+                width: '75%',
+                height: '75%',
+                class: 'modern',
+                mount: document.getElementById('staticData')
+            })
+        },
+        openIOWinbox() {
+            new WinBox('IO Data', {
+                color: 'white',
+                background: "#04A9F5",
+                x: 'center',
+                y: 'center',
+                width: '75%',
+                height: '75%',
+                class: 'modern',
+                mount: document.getElementById('IOData'),
+                onblur: function(){
+                    this.setBackground("#999");
+                },
+            })
+        },
+        updatedata() {
+            let str = this.editor.getValue()
+            this.curComponent.propValue.option.series.data = JSON.parse(str)
+        },
     },
 }
 </script>
-<style lang="scss" scoped>
-.attr-list {
-    overflow: auto;
-    padding: 20px;
-    padding-top: 0;
-    height: 100%;
+<style lang="less">
+@import '~winbox/src/css/themes/modern.less';
+@import '~winbox/src/css/winbox.less';
+
+.chart-data-option {
+  .fullscreen {
+    z-index: 99;
+    cursor: pointer;
+    position: absolute;
+    bottom: 25px;
+    right: 45px;
+    font-size: 20px;
+  }
+}
+
+.winbox.modern {
+  z-index: 99 !important;
+  animation: none !important;
+  background: var(--color-primary);
+
+  .wb-body {
+    padding: 5px;
+    color: black;
+    background-color: var(--modal-bg);
+  }
+}
+
+.modal-form-item {
+  display: flex;
+  flex-direction: column;
+
+  .label {
+    margin: 15px 0 10px;
+  }
+
+  .control-wrapper {
+  }
+}
+.gap-2 {
+    float: right;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
 }
 </style>
