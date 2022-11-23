@@ -54,8 +54,6 @@
                         <el-button @click="openStaticWinbox">修改数据</el-button>
                     </el-form-item>
                     <el-form-item label="接口数据源">
-                        <el-radio v-model="curComponent.propValue.radio" label="GET">GET</el-radio>
-                        <el-radio v-model="curComponent.propValue.radio" label="POST">POST</el-radio>
                         <el-button @click="openIOWinbox">调式接口</el-button>
                     </el-form-item>
                 </el-form>
@@ -71,7 +69,7 @@
                     elevation="2"
                     raised
                     small
-                    color="#409EFF"
+                    color="#04A9F5"
                     @click="updatedata"
                     >
                     <v-icon>mdi-update</v-icon>更新数据
@@ -81,12 +79,15 @@
         <div style="display: none">
             <div id="IOData">
                 <el-form>
-                    <p style="margin:5px;color:bisque">请求地址：</p>
+                    <p style="margin:5px;color:black">请求类型: </p>
+                    <el-radio v-model="curComponent.propValue.radio" label="GET">GET</el-radio>
+                    <el-radio v-model="curComponent.propValue.radio" label="POST">POST</el-radio>
+                    <p style="margin:7px;color:black">请求地址: </p>
                     <el-input>
                         <template slot="prepend">HTTPS://</template>
                     </el-input>
                 </el-form>
-                <p style="margin:5px;color:bisque">请求体参数JSON：</p>
+                <p style="margin:10px 0 10px 10px;color:black">请求体参数JSON: </p>
                 <div class="modal-form-item dark-theme">
                     <div ref="ace2"></div>
                 </div>
@@ -98,8 +99,8 @@
 <script>
 import { optionsum } from '@/utils/echart/columnar.js'
 import ace from 'ace-builds'
-import 'ace-builds/src-min-noconflict/theme-cobalt'
 import 'ace-builds/src-min-noconflict/theme-github'
+import 'ace-builds/src-min-noconflict/theme-chrome'
 import 'ace-builds/src-min-noconflict/mode-json5'
 import WinBox from 'winbox/src/js/winbox'
 export default {
@@ -113,10 +114,10 @@ export default {
     mounted() {
         ace.config.set("basePath", "https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/");
         this.editor = ace.edit(this.$refs.ace, {
-            maxLines: 24, // 最大行数，超过会自动出现滚动条
-            minLines: 24, // 最小行数，还未到最大行数时，编辑器会自动伸缩大小
+            maxLines: 28, // 最大行数，超过会自动出现滚动条
+            minLines: 28, // 最小行数，还未到最大行数时，编辑器会自动伸缩大小
             fontSize: 14, // 编辑器内字体大小
-            theme: 'ace/theme/cobalt', // 默认设置的主题
+            theme: 'ace/theme/chrome', // 默认设置的主题
             mode: 'ace/mode/json5', // 默认设置的语言模式
             tabSize: 4,// 制表符设置为 4 个空格大小
             readOnly: false, //只读
@@ -126,10 +127,10 @@ export default {
         });
 
         this.editor2 = ace.edit(this.$refs.ace2, {
-            maxLines: 24, // 最大行数，超过会自动出现滚动条
-            minLines: 24, // 最小行数，还未到最大行数时，编辑器会自动伸缩大小
+            maxLines: 20, // 最大行数，超过会自动出现滚动条
+            minLines: 20, // 最小行数，还未到最大行数时，编辑器会自动伸缩大小
             fontSize: 14, // 编辑器内字体大小
-            theme: 'ace/theme/github', // 默认设置的主题
+            theme: 'ace/theme/chrome', // 默认设置的主题
             mode: 'ace/mode/json5', // 默认设置的语言模式
             tabSize: 4,// 制表符设置为 4 个空格大小
             readOnly: false, //只读
@@ -164,7 +165,7 @@ export default {
         },
         openStaticWinbox() {
             new WinBox('Static Data', {
-                background: "#1E1E1E",
+                background: "#04A9F5",
                 x: 'center',
                 y: 'center',
                 width: '75%',
@@ -217,8 +218,7 @@ export default {
 
   .wb-body {
     padding: 5px;
-    color: black;
-    background-color: var(--modal-bg);
+    background-color: #FFFFFF;
   }
 }
 
