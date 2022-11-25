@@ -29,7 +29,7 @@ export default {
     computed: {
         curComponent() {
             return this.$store.state.curComponent
-        },
+        }
     },
     watch: {
         'propValue.chart': function() {

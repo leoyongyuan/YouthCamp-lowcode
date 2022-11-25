@@ -5,8 +5,8 @@
         elevation="2"
         raised
         small
-        @click="openSearchBox"
-        ><v-icon>mdi-magnify-expand</v-icon></v-btn>
+        @click="fullscreen"
+        ><v-icon>mdi-fullscreen-exit</v-icon></v-btn>
         <v-btn
         class="gap"
         elevation="2"
@@ -35,27 +35,29 @@
             </el-dropdown-menu>
             </el-dropdown>
         </el-col>
-      <div ref="ace" class="ace-editor"/>
-        <v-btn
-            class="gap-2"
-            elevation="2"
-            raised
-            small
-            color="#8BC34A"
-            @click="getCode"
-            >
-            <v-icon>mdi-file-upload-outline</v-icon>保存提交
-        </v-btn>
-        <v-btn
-            class="gap-2"
-            elevation="2"
-            raised
-            small
-            color="#B3E5FC"
-            @click="setCode"
-            >
-            <v-icon>mdi-update</v-icon>更新代码
-        </v-btn>
+        <div id="AceEditor">
+            <div ref="ace" class="ace-editor"/>
+            <v-btn
+                class="gap-2"
+                elevation="2"
+                raised
+                small
+                color="#8BC34A"
+                @click="getCode"
+                >
+                <v-icon>mdi-file-upload-outline</v-icon>保存提交
+                </v-btn>
+                <v-btn
+                class="gap-2"
+                elevation="2"
+                raised
+                small
+                color="#B3E5FC"
+                @click="setCode"
+                >
+                <v-icon>mdi-update</v-icon>更新代码
+            </v-btn>
+        </div>
     </div>
 </template>
 
@@ -74,6 +76,7 @@ import 'ace-builds/src-min-noconflict/mode-xml'
 import 'ace-builds/src-min-noconflict/mode-json5'
 //代码完成
 import 'ace-builds/src-min-noconflict/ext-language_tools'
+import WinBox from 'winbox/src/js/winbox'
 import { mapState } from 'vuex'
 
 export default {
@@ -136,8 +139,17 @@ export default {
                 this.$store.commit('acesetcurComponent', JSON.parse(str))
         },
         
-        openSearchBox () {
-            this.editor.execCommand('find');
+        fullscreen () {
+            new WinBox('AceJSON', {
+                color: 'white',
+                background: "#04A9F5",
+                x: 'center',
+                y: 'center',
+                width: '75%',
+                height: '75%',
+                class: 'modern',
+                mount: document.getElementById('AceEditor'),
+            })
         },
 
         closeEditor() {
@@ -150,8 +162,41 @@ export default {
     }
 }
 </script>
+<style lang="less">
+@import '~winbox/src/css/themes/modern.less';
+@import '~winbox/src/css/winbox.less';
 
-<style scoped>
+.chart-data-option {
+  .fullscreen {
+    z-index: 99;
+    cursor: pointer;
+    position: absolute;
+    bottom: 25px;
+    right: 45px;
+    font-size: 20px;
+  }
+}
+
+.winbox.modern {
+  z-index: 99 !important;
+  animation: none !important;
+  background: var(--color-primary);
+
+  .wb-body {
+    padding: 5px;
+    background-color: #FFFFFF;
+  }
+}
+
+.modal-form-item {
+  display: flex;
+  flex-direction: column;
+
+  .label {
+    margin: 15px 0 10px;
+  }
+}
+
 .ace-editor {
     margin-bottom: 7px;
 }
