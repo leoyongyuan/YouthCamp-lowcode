@@ -78,3 +78,5 @@ npm run dev
 ```
 npm run build
 ```
+
+[![Security Status](https://www.murphysec.com/platform3/v3/badge/1609252837319450624.svg)](https://www.murphysec.com/accept?code=a7fe924cb22c125ea703c046cc836b6c&type=1&from=2&t=1)
