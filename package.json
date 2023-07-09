@@ -9,17 +9,13 @@
   "dependencies": {
     "ace-builds": "^1.11.2",
     "core-js": "^3.8.3",
-    "echarts": "^5.4.0",
-    "echarts-gl": "^2.0.9",
     "element-ui": "^2.15.10",
-    "jquery": "^3.6.1",
     "less-loader": "^11.1.0",
     "mathjs": "^11.2.1",
     "vue": "^2.6.14",
-    "vue-router": "^3.5.1",
     "vuetify": "^2.6.0",
     "vuex": "^3.6.2",
-    "winbox": "^0.2.6"
+    "winbox": "^0.2.731"
   },
   "devDependencies": {
     "@nuxtjs/composition-api": "^0.33.1",
@@ -27,12 +23,14 @@
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "compression-webpack-plugin": "^10.0.0",
     "sass": "^1.32.7",
     "sass-loader": "^12.0.0",
     "vue-cli-plugin-vuetify": "~2.5.8",
     "vue-template-compiler": "^2.6.14",
     "vue2-ace-editor": "^0.0.15",
-    "vuetify-loader": "^1.7.0"
+    "vuetify-loader": "^1.7.0",
+    "webpack-bundle-analyzer": "^4.9.0"
   },
   "browserslist": [
     "> 1%",

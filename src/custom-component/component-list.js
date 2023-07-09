@@ -125,21 +125,24 @@ const list = [
         },
     },
     {
-        component: 'Video',
-        label: '视频',
-        icon: 'el-icon-video-camera',
-        propValue: {
-            url: require('@/assets/video1.mp4'),
-            flip: {
-                horizontal: false,
-                vertical: false,
-            },
-        },
-        style: {
-            width: 500,
-            height: 300,
-            borderRadius: '',
-        },
+      component: 'VCarousel',
+      label: '轮播图',
+      icon: 'mdi-view-carousel-outline',
+      propValue: {
+          url: [
+              require('@/assets/image1.jpg'),
+              require('@/assets/image2.jpg'),
+              require('@/assets/image3.jpg'),
+              require('@/assets/image4.jpg'),
+              require('@/assets/image5.jpg')
+          ],
+          cycle: false,
+      },
+      style: {
+          width: 800,
+          height: 500,
+          borderRadius: '',
+      },
     },
     {
         component: 'VTable',
@@ -172,188 +175,6 @@ const list = [
         style: {
             width: 500,
             height: 300,
-            borderRadius: '',
-        },
-    },
-    {
-        component: 'VCarousel',
-        label: '轮播图',
-        icon: 'mdi-view-carousel-outline',
-        propValue: {
-            url: [
-                require('@/assets/image1.jpg'),
-                require('@/assets/image2.jpg'),
-                require('@/assets/image3.jpg'),
-                require('@/assets/image4.jpg'),
-                require('@/assets/image5.jpg')
-            ],
-            cycle: false,
-        },
-        style: {
-            width: 800,
-            height: 500,
-            borderRadius: '',
-        },
-    },
-    {
-        component: 'VChartScatter',
-        label: '散点图',
-        icon: 'mdi-chart-scatter-plot',
-        propValue: {
-            chart: 'optionscatter',
-            radio: 'GET',
-            option: {
-                label: '散点图',
-                disabled: false,
-                chart: 'optionscatter',
-                xAxis: {
-                    data: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-                },
-                yAxis: {},
-                series: [
-                    {
-                        type: 'scatter',
-                        data: [220, 182, 191, 234, 290, 330, 310],
-                    },
-                ],
-            },
-        },
-        style: {
-            width: 800,
-            height: 500,
-            borderRadius: '',
-        },
-    },
-    {
-        component: 'VChartColumnar',
-        label: '柱状图',
-        icon: 'mdi-chart-bar',
-        propValue: {
-            chart: 'optioncolumnar',
-            option: {
-                label: '柱状图',
-                disabled: false,
-                chart: 'optioncolumnar',
-                title: {
-                    text:'柱状图',
-                    show: true,
-                },
-                legend: {
-                    show: true,
-                },
-                tooltip: {
-                    show: true,
-                    trigger: 'item',
-                },
-                xAxis: {
-                    show: true,
-                    data: ['A', 'B', 'C', 'D', 'E'],
-                },
-                yAxis: {},
-                series: {
-                    type: 'bar',
-                    name: '销量',
-                    data: [23, 61, 35, 77,35],
-                    itemStyle: {
-                        barBorderRadius: 5,
-                        borderWidth: 1,
-                        borderType: 'solid',
-                        borderColor: '#73c0de',
-                        shadowColor: '#5470c6',
-                        shadowBlur: 3,
-                    },
-                }
-            }
-        },
-        style: {
-            width: 800,
-            height: 500,
-            borderRadius: '',
-        },
-    },
-    {
-        component: 'VChartLine',
-        label: '折线图',
-        icon: 'mdi-chart-line',
-        propValue: {
-            chart: 'optionline',
-            option: {
-                label: '折线图',
-                disabled: false,
-                chart: 'optionline',
-                xAxis: {
-                    data: ['A', 'B', 'C', 'D', 'E'],
-                },
-                yAxis: {},
-                series: [
-                    {
-                        data: [10, 22, 28, 23, 19],
-                        type: 'line',
-                        label: {
-                            show: true,
-                            position: 'bottom',
-                            textStyle: {
-                                fontSize: 20,
-                            },
-                        },
-                    },
-                ],
-            },
-        },
-        style: {
-            width: 800,
-            height: 500,
-            borderRadius: '',
-        },
-    },
-    {
-        component: 'VChartPie',
-        label: '饼状图',
-        icon: 'mdi-chart-pie',
-        propValue: {
-            chart: 'optionpie',
-            option: {
-                label: '圆环图',
-                disabled: false,
-                chart: 'optionpie',
-                title: {
-                    text: '圆环图',
-                    left: 'center',
-                    top: 'center',
-                },
-                series: [
-                    {
-                        type: 'pie',
-                        data: [
-                            {
-                                value: 335,
-                                name: 'A',
-                            },
-                            {
-                                value: 234,
-                                name: 'B',
-                            },
-                            {
-                                value: 1548,
-                                name: 'C',
-                            },
-                            {
-                                value: 111,
-                                name: 'D',
-                            },
-                            {
-                                value: 658,
-                                name: 'E',
-                            },
-                        ],
-                        radius: ['40%', '70%'],
-                    },
-                ],
-            }
-        },
-        style: {
-            width: 800,
-            height: 500,
             borderRadius: '',
         },
     },
